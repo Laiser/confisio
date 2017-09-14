@@ -1,156 +1,135 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	<meta charset="utf-8">
-		<title>Sistema ConFisio</title>
-		
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <head>
+        <meta charset="utf-8">
+        <title>Sistema ConFisio</title>
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-		<link rel="icon" id="favicon" href="img/favicon.ico" type="image/x-icon">
-	</head>
-		<body>
-		<nav class="navbar navbar-default"  style="background-color: #D8F6CE;"  > 			
-			<div class="container">				
-				<div class="navbar-header">
-					<a href="" class="navbar-brand">Sistema ConFisio</a>
-					<button class="navbar-toggle glyphicon glyphicon-menu-hamburger" data-toggle ="collapse" data-target = "#lista-menu"></button>
-				</div>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-					<ul id="lista-menu" class="nav navbar-nav navbar-right collapse navbar-collapse">						
-						<li class="active"><a href="atendimento.html">Atendimentos</a></li>
-						<li><a href="pacientes.html">Pacientes</a></li>
-						<li><a href="retornos.html">Retornos</a></li>
-					</ul>
+        <link rel="icon" id="favicon" href="img/favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+        <nav class="navbar navbar-default"  style="background-color: #D8F6CE;"  > 			
+            <div class="container">				
+                <div class="navbar-header">
+                    <a href="" class="navbar-brand">Sistema ConFisio</a>
+                    <button class="navbar-toggle glyphicon glyphicon-menu-hamburger" data-toggle ="collapse" data-target = "#lista-menu"></button>
+                </div>
 
-			</div>
-		</nav>
+                <ul id="lista-menu" class="nav navbar-nav navbar-right collapse navbar-collapse">						
+                    <li class="active"><a href="atendimento.html">Atendimentos</a></li>
+                    <li><a href="pacientes.html">Pacientes</a></li>
+                    <li><a href="retornos.html">Retornos</a></li>
+                </ul>
 
+            </div>
+        </nav>
 
-				<div class="container">
-			
-					<div class="row">
+        <div class="container">
 
-					<div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-10 col-md-offset-1">					
-					<form>
-						  <div class="dropdown">
-					  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Consulta Clientes
-					  		<span class="caret"></span>
-					  </button>
-						  <ul class="dropdown-menu">
-						    <li><a href="#">Cliente1</a></li>
-						    <li><a href="#">Cliente2</a></li>
-						    <li><a href="#">Cliente3</a></li>
-					  	</ul>
-						</div>
+            <div class="row">
 
-						<div class="form-group  ">
-					      <label for="inputNome" class="col-form-label">Nome</label>
-					      <input type="nome" class="form-control" id="inputNome" placeholder="Nome do paciente">
-					    </div>
+                <div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-10 col-md-offset-1">					
+                    <form>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Consulta cadastro de  Clientes
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Cliente1</a></li>
+                                <li><a href="#">Cliente2</a></li>
+                                <li><a href="#">Cliente3</a></li>
+                            </ul>
+                        </div>
 
-					    <div class="form-group col-md-2 ">
-					      <label for="inputAvaliacao" class="col-form-label">Avaliação:</label>
-					      <input type="avaliacao" class="form-control" id="inputAvaliacao" placeholder="Dias">
-					    </div>
+                        <div class="form-group  ">
+                            <label for="inputNome" class="col-form-label">Nome</label>
+                            <input type="nome" class="form-control" id="inputNome" placeholder="Nome do paciente">
+                        </div>
 
-					    <div class="form-group col-md-2  ">
-					      <label for="inputDiasUso" class="col-form-label">Dias de uso:</label>
-					      <input type="diasUso" class="form-control" id="inputDiasUso" placeholder="Dias">
-					    </div>
+                        <div class="form-group col-md-2 ">
+                            <label for="inputAvaliacao" class="col-form-label">Avaliação:</label>
+                            <input type="avaliacao" class="form-control" id="inputAvaliacao" placeholder="Dias">
+                        </div>
 
-					    <div class="form-group col-md-2  ">
-					      <label for="inputDias4" class="col-form-label">Dias + 4h:</label>
-					      <input type="dias4" class="form-control" id="inputDias4" placeholder="Dias">
-					    </div>
+                        <div class="form-group col-md-2  ">
+                            <label for="inputDiasUso" class="col-form-label">Dias de uso:</label>
+                            <input type="diasUso" class="form-control" id="inputDiasUso" placeholder="Dias">
+                        </div>
 
-					    <div class="form-group col-md-2  ">
-					      <label for="inputMediaUso" class="col-form-label">Média de uso:</label>
-					      <input type="mediaHoras" class="form-control" id="inputMediaUso" placeholder="Horas">
-					    </div>
+                        <div class="form-group col-md-2  ">
+                            <label for="inputDias4" class="col-form-label">Dias + 4h:</label>
+                            <input type="dias4" class="form-control" id="inputDias4" placeholder="Dias">
+                        </div>
 
-					    <div class="form-group col-md-2  ">
-					      <label for="inputPressaoM" class="col-form-label">Pressão:</label>
-					      <input type="pressaoM" class="form-control" id="inputPressaoM" placeholder="Média">
-					    </div>
+                        <div class="form-group col-md-2  ">
+                            <label for="inputMediaUso" class="col-form-label">Média de uso:</label>
+                            <input type="mediaHoras" class="form-control" id="inputMediaUso" placeholder="Horas">
+                        </div>
 
-					    <div class="form-group col-md-2  ">
-					      <label for="inputIah" class="col-form-label">IAH:</label>
-					      <input type="iah" class="form-control" id="inputIah" placeholder="Valor">
-					    </div>
+                        <div class="form-group col-md-2  ">
+                            <label for="inputPressaoM" class="col-form-label">Pressão:</label>
+                            <input type="pressaoM" class="form-control" id="inputPressaoM" placeholder="Média">
+                        </div>
 
-					    <div class="form-group col-md-2  ">
-					      <label for="inputIa" class="col-form-label">IA:</label>
-					      <input type="ia" class="form-control" id="inputIa" placeholder="Valor">
-					    </div>
+                        <div class="form-group col-md-2  ">
+                            <label for="inputIah" class="col-form-label">IAH:</label>
+                            <input type="iah" class="form-control" id="inputIah" placeholder="Valor">
+                        </div>
 
-					    <div class="form-group col-md-2  ">
-					      <label for="inputIh" class="col-form-label">IH:</label>
-					      <input type="ih" class="form-control" id="inputIh" placeholder="Valor">
-					    </div>
+                        <div class="form-group col-md-2  ">
+                            <label for="inputIa" class="col-form-label">IA:</label>
+                            <input type="ia" class="form-control" id="inputIa" placeholder="Valor">
+                        </div>
 
-					    <div class="form-group col-md-2  ">
-					      <label for="inputIac" class="col-form-label">IA Central:</label>
-					      <input type="iac" class="form-control" id="inputIac" placeholder="Valor">
-					    </div>
+                        <div class="form-group col-md-2  ">
+                            <label for="inputIh" class="col-form-label">IH:</label>
+                            <input type="ih" class="form-control" id="inputIh" placeholder="Valor">
+                        </div>
 
-					    <div class="form-group  ">
-					      
-					       <textarea class="form-control" rows="5" id="comment"  placeholder="Queixas do paciente"></textarea>
-					    </div>
-					 
-					</form>
+                        <div class="form-group col-md-2  ">
+                            <label for="inputIac" class="col-form-label">IA Central:</label>
+                            <input type="iac" class="form-control" id="inputIac" placeholder="Valor">
+                        </div>
 
-					  
+                        <div class="form-group  ">
 
-					</div>
-				
-			</div>
+                            <textarea class="form-control" rows="5" id="comment"  placeholder="Queixas do paciente"></textarea>
+                        </div>
+                        
+                        
+                          
+
+                    </form>
 
 
-		</div>
+
+                </div>
+
+            </div>
 
 
-				<div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-2 col-md-4 col-md-offset-3">
-				  <button type="button" class="btn btn-success">Gravar</button> 
-				  
+        </div>
 
-				</div>
 
-				<div>
-					
-			<footer>
-				
-				<div class="footer-limiter">
+        <div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-2 col-md-4 col-md-offset-3">
+            <button type="button" class="btn btn-success">Gravar</button> 			  
 
-					<div class="footer-right"  style="background-color: #D8F6CE;"  > 	
+        </div>
 
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-github"></i></a>
+        <footer class="navbar navbar-default" style="background-color: #D8F6CE; margin-top: 440px "  > 
+            <div class="container">
+                <span class="text-muted">Rodapé.....</span>
+            </div>
+        </footer>	
 
-					</div>
 
-					<div class="footer-left">
 
-						<p class="footer-links">This is your sticky footer</p>
-
-						<p>Company Name © 2016</p>
-					</div>
-
-				</div>
-
-			</footer>
-
-				</div>
-
-				
-
-		</body>
+    </body>
 
 
 </html>
