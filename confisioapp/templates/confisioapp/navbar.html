@@ -1,0 +1,21 @@
+<nav class="navbar navbar-default"  style="background-color: #417690;"  > 			
+    <div class="container">				
+        <div class="navbar-header">
+            <a href="" class="navbar-brand" >Sistema ConFisio</a>
+            <button class="navbar-toggle glyphicon glyphicon-menu-hamburger" data-toggle ="collapse" data-target = "#lista-menu"></button>
+        </div>
+
+        <ul id="lista-menu" class="nav navbar-nav navbar-right collapse navbar-collapse">						
+            <li {%if request.path == "/atendimento/" %} class="active" {% endif %}><a href="/atendimento/">Atendimentos</a></li>
+            <li {%if request.path == "/paciente/" %} class="active" {% endif %}><a href="/paciente/">Pacientes</a></li>
+            <li {%if request.path == "/retorno/" %} class="active" {% endif %}><a  href="/retorno/">Retornos</a></li>
+        </ul>
+
+    </div>
+    <div class="breadcrumbs" style="background-color: #79AEC8;"  > 	
+    <a href="">Home</a>
+    &rsaquo; <a href="">Pacientes</a>
+    &rsaquo; <a href="">Retornos</a>
+    </div>
+
+</nav>

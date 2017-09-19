@@ -1,0 +1,87 @@
+{% extends "confisioapp/base.html" %} 
+{% block conteudo %}
+<div class="container">
+    
+                <div class="row">
+    
+                    <div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-10 col-md-offset-1">					
+                        <form>
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Consulta cadastro de  Clientes
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Cliente1</a></li>
+                                    <li><a href="#">Cliente2</a></li>
+                                    <li><a href="#">Cliente3</a></li>
+                                </ul>
+                            </div>
+    
+                            <div class="form-group  ">
+                                <label for="inputNome" class="col-form-label">Nome</label>
+                                <input type="nome" class="form-control" id="inputNome" placeholder="Nome do paciente">
+                            </div>
+    
+                            <div class="form-group col-md-2 ">
+                                <label for="inputAvaliacao" class="col-form-label">Avaliação:</label>
+                                <input type="avaliacao" class="form-control" id="inputAvaliacao" placeholder="Dias">
+                            </div>
+    
+                            <div class="form-group col-md-2  ">
+                                <label for="inputDiasUso" class="col-form-label">Dias de uso:</label>
+                                <input type="diasUso" class="form-control" id="inputDiasUso" placeholder="Dias">
+                            </div>
+    
+                            <div class="form-group col-md-2  ">
+                                <label for="inputDias4" class="col-form-label">Dias + 4h:</label>
+                                <input type="dias4" class="form-control" id="inputDias4" placeholder="Dias">
+                            </div>
+    
+                            <div class="form-group col-md-2  ">
+                                <label for="inputMediaUso" class="col-form-label">Média de uso:</label>
+                                <input type="mediaHoras" class="form-control" id="inputMediaUso" placeholder="Horas">
+                            </div>
+    
+                            <div class="form-group col-md-2  ">
+                                <label for="inputPressaoM" class="col-form-label">Pressão:</label>
+                                <input type="pressaoM" class="form-control" id="inputPressaoM" placeholder="Média">
+                            </div>
+    
+                            <div class="form-group col-md-2  ">
+                                <label for="inputIah" class="col-form-label">IAH:</label>
+                                <input type="iah" class="form-control" id="inputIah" placeholder="Valor">
+                            </div>
+    
+                            <div class="form-group col-md-2  ">
+                                <label for="inputIa" class="col-form-label">IA:</label>
+                                <input type="ia" class="form-control" id="inputIa" placeholder="Valor">
+                            </div>
+    
+                            <div class="form-group col-md-2  ">
+                                <label for="inputIh" class="col-form-label">IH:</label>
+                                <input type="ih" class="form-control" id="inputIh" placeholder="Valor">
+                            </div>
+    
+                            <div class="form-group col-md-2  ">
+                                <label for="inputIac" class="col-form-label">IA Central:</label>
+                                <input type="iac" class="form-control" id="inputIac" placeholder="Valor">
+                            </div>
+    
+                            <div class="form-group  ">
+    
+                                <textarea class="form-control" rows="5" id="comment"  placeholder="Queixas do paciente"></textarea>
+                            </div>
+                            
+    
+                        </form>
+    
+    
+    
+                    </div>
+    
+                </div>
+    
+    
+            </div>
+    
+{% endblock %}
