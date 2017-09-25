@@ -23,3 +23,9 @@ def cadastro(request):
 
 def consulta(request):
     return render(request,'confisioapp/consulta.html')
+
+def lancamento_retorno(request):
+    return render(request,'confisioapp/lancamento_retorno.html')
+
+def consulta_retorno(request):
+    return render(request,'confisioapp/consulta_retorno.html')
