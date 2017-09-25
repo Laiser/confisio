@@ -5,56 +5,56 @@
                 <div class="row">
     
                     <div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-10 col-md-offset-1">					
-                        <form>                            
+                        <form method="post" action="/lanca_atendimento/">                            
     
                             <div class="form-group  ">
                                 <label for="inputNome" class="col-form-label">Nome</label>
-                                <input type="nome" class="form-control" id="inputNome" placeholder="Nome do paciente">
+                                <input name="nome" class="form-control" id="inputNome" placeholder="Nome do paciente">
                             </div>
     
                             <div class="form-group col-md-2 ">
                                 <label for="inputAvaliacao" class="col-form-label">Avaliação:</label>
-                                <input type="avaliacao" class="form-control" id="inputAvaliacao" placeholder="Dias">
+                                <input name="avaliacao" class="form-control" id="inputAvaliacao" placeholder="Dias">
                             </div>
     
                             <div class="form-group col-md-2  ">
                                 <label for="inputDiasUso" class="col-form-label">Dias de uso:</label>
-                                <input type="diasUso" class="form-control" id="inputDiasUso" placeholder="Dias">
+                                <input name="diasUso" class="form-control" id="inputDiasUso" placeholder="Dias">
                             </div>
     
                             <div class="form-group col-md-2  ">
                                 <label for="inputDias4" class="col-form-label">Dias + 4h:</label>
-                                <input type="dias4" class="form-control" id="inputDias4" placeholder="Dias">
+                                <input name="dias4" class="form-control" id="inputDias4" placeholder="Dias">
                             </div>
     
                             <div class="form-group col-md-2  ">
                                 <label for="inputMediaUso" class="col-form-label">Média de uso:</label>
-                                <input type="mediaHoras" class="form-control" id="inputMediaUso" placeholder="Horas">
+                                <input name="mediaHoras" class="form-control" id="inputMediaUso" placeholder="Horas">
                             </div>
     
                             <div class="form-group col-md-2  ">
                                 <label for="inputPressaoM" class="col-form-label">Pressão:</label>
-                                <input type="pressaoM" class="form-control" id="inputPressaoM" placeholder="Média">
+                                <input name="pressaoM" class="form-control" id="inputPressaoM" placeholder="Média">
                             </div>
     
                             <div class="form-group col-md-2  ">
                                 <label for="inputIah" class="col-form-label">IAH:</label>
-                                <input type="iah" class="form-control" id="inputIah" placeholder="Valor">
+                                <input name="iah" class="form-control" id="inputIah" placeholder="Valor">
                             </div>
     
                             <div class="form-group col-md-2  ">
                                 <label for="inputIa" class="col-form-label">IA:</label>
-                                <input type="ia" class="form-control" id="inputIa" placeholder="Valor">
+                                <input name="ia" class="form-control" id="inputIa" placeholder="Valor">
                             </div>
     
                             <div class="form-group col-md-2  ">
                                 <label for="inputIh" class="col-form-label">IH:</label>
-                                <input type="ih" class="form-control" id="inputIh" placeholder="Valor">
+                                <input name="ih" class="form-control" id="inputIh" placeholder="Valor">
                             </div>
     
                             <div class="form-group col-md-2  ">
                                 <label for="inputIac" class="col-form-label">IA Central:</label>
-                                <input type="iac" class="form-control" id="inputIac" placeholder="Valor">
+                                <input name="iac" class="form-control" id="inputIac" placeholder="Valor">
                             </div>
     
                             <div class="form-group  ">
@@ -71,20 +71,16 @@
     
                 </div>
 
-                <div class="row">
-                    
-                            <div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-10 col-md-offset-1">
-                                
-                            <form>
-                              <button type="submit" class="btn btn-success">Gravar</button>    
-                              <button type="button" class="btn btn-warning">Editar</button>  
-                              <button type="button" class="btn btn-danger">Deletar</button>
-                             
-                            </form>        
-                            
-                          </div>
+                <div class="row">                    
+                            <div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-10 col-md-offset-1">                                
+                                <form>
+                                <button type="submit" class="btn btn-success">Gravar</button>    
+                                <button type="submit" class="btn btn-warning">Editar</button>  
+                                <button type="submit" class="btn btn-danger">Deletar</button>                             
+                                </form>
+                            </div>
                 </div>    
                  
     
-            </div> 
+</div> 
 {% endblock %}

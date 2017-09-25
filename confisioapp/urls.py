@@ -8,10 +8,13 @@ urlpatterns = [
     url(r'^paciente/$', views.paciente, name='paciente'),
     url(r'^login/$', views.login, name='login'),
     url(r'^retorno/$', views.retorno, name='retorno'),
-    url(r'^cadastro/$', views.cadastro, name='cadastro'),
-    url(r'^consulta/$', views.consulta, name='consulta'),
-    url(r'^consulta_retorno/$', views.consulta, name='consulta_retorno'),
-    url(r'^lancamento_retorno/$', views.consulta, name='lancamento_retorno'),
+    url(r'^cadastro_pacientes/$', views.cadastro_pacientes, name='cadastro_pacientes'),
+    url(r'^consulta_pacientes/$', views.consulta_pacientes, name='consulta_pacientes'),
+    url(r'^consulta_retorno/$', views.consulta_retorno, name='consulta_retorno'),
+    url(r'^lancamento_retorno/$', views.lancamento_retorno, name='lancamento_retorno'),
+    url(r'^lanca_atendimento/$', views.lanca_atendimento, name='lanca_atendimento'),
+
+
 
     #url(r'^', include(confisioapp.urls)),
 
