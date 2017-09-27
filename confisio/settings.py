@@ -29,7 +29,6 @@ ALLOWED_HOSTS = ['200.18.32.12']
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'confisioapp.apps.ConfisioappConfig',
     'django.contrib.admin',
