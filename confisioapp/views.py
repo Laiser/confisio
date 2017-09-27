@@ -17,7 +17,6 @@ def consulta_atendimento(request):
     }
     return render(request,'confisioapp/consulta_atendimento.html',contexto)
 
-
 def paciente(request):
     return render(request,'confisioapp/paciente.html')
 
@@ -30,14 +29,49 @@ def retorno(request):
 def cadastro_pacientes(request):
     return render(request,'confisioapp/cadastro_pacientes.html')
 
+def processa_cadastro_paciente(request):
+    nome = request.POST.get("nome")
+    endereco = request.POST.get("endereco")
+    email = request.POST.get("email")
+    cpf = request.POST.get("cpf")
+    dataNasci = request.POST.get("dataNascimento")
+    telefone = request.POST.get("telefone")
+    altura = request.POST.get("altura")
+    peso = request.POST.get("peso")
+    observacao = request.POST.get("observacao")
+
+    paciente = Paciente(
+
+        nome = nome,
+        cpf = cpf,
+        email = email,
+        telefone = telefone,
+        data_nascimento = dataNasci,
+        peso = peso,
+        altura = altura,
+        observacao = observacao
+
+    )
+
+    paciente.save()
+    return redirect('/consulta_pacientes/')
+    
+
 def consulta_pacientes(request):
-    return render(request,'confisioapp/consulta_pacientes.html')
+    lista_pacientes = Paciente.objects.all()
+    contexto = {
+        'lista_pacientes' : lista_pacientes,
+    }
+    return render(request,'confisioapp/consulta_pacientes.html',contexto)
 
 def lancamento_retorno(request):
     return render(request,'confisioapp/lancamento_retorno.html')
 
 def consulta_retorno(request):
     return render(request,'confisioapp/consulta_retorno.html')
+
+def mensagem(request):
+    return render(request,'confisioapp/mensagem.html')
 
 def lanca_atendimento(request):
     nome = request.POST.get("nome")
@@ -71,4 +105,4 @@ def lanca_atendimento(request):
     )
 
     atendimento.save()
-    return redirect('/')
+    return redirect('/consulta_atendimento/')

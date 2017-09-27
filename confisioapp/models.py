@@ -5,6 +5,7 @@ from django.utils import timezone
 
 class Paciente(models.Model):
     nome = models.CharField(max_length= 200)
+    endereco = models.CharField(max_length= 200)
     cpf = models.CharField(max_length = 15)
     email = models.CharField(max_length= 200)
     telefone = models.CharField(max_length = 15)

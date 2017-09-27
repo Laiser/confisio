@@ -6,6 +6,7 @@
       <table class="table table-hover table-active">
         <thead class="thead-inverse">
           <tr>
+            <th>Marcar</th>
             <th>#</th>
             <th>Periodo de avaliação</th>
             <th>Dias com + 4</th>
@@ -22,6 +23,7 @@
         <tbody>
           {% for atendimento in lista_atendimentos %}
           <tr>
+            <td><input type="checkbox" name="atendimento" value="id"></td>
             <td>{{ atendimento.pk }}</td>
             <td>{{ atendimento.periodo_avaliacao }}</td>
             <td>{{ atendimento.dias_mais_quatro }}</td>
@@ -33,6 +35,7 @@
             <td>{{ atendimento.queixa }}</td>
             <td>{{ atendimento.conduta }}</td>
             <td>{{ atendimento.valor_consulta }}</td>
+            <td><button class="glyphicon glyphicon-pencil"></button></td>
           </tr>
           {% endfor %}
         </tbody>
