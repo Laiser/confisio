@@ -6,15 +6,25 @@
         </div>
 
         <ul class="nav navbar-nav">
-            <li {%if request.path == "/atendimento/" %} class="active" {% endif %}><a id="textomenu" href="/atendimento/">Atendimentos</a></li>
+            <!--li {%if request.path == "/atendimento/" %} class="active" {% endif %}><a id="textomenu" href="/atendimento/">Atendimentos</a></li-->
             <!--i {%if request.path == "/paciente/" %} class="active" {% endif %}><a href="/paciente/">Pacientes</a></li-->
             <!--li {%if request.path == "/retorno/" %} class="active" {% endif %}><a  href="/retorno/">Retornos</a></li-->
+            <li class="nav-item btn-group">
+                    <a id="textomenu" class="dropdown-toggle nav-link" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Atendimentos
+                    </a>                    
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/atendimento/">Lançamento</a><br>
+                        <a class="dropdown-item" href="/consulta_atendimento/">Consulta</a>
+                        
+                    </div>
+                </li>
             <li class="nav-item btn-group">
                 <a id="textomenu" class="dropdown-toggle nav-link" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Retornos
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/lancamento_retorno/">Lançamento</a>
+                    <a class="dropdown-item" href="/lancamento_retorno/">Lançamento</a><br>
                     <a class="dropdown-item" href="/consulta_retorno/">Consulta</a>
                     
                 </div>
@@ -25,7 +35,7 @@
                 Cadastro de Pacientes
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/cadastro_pacientes/">Cadastro</a>
+                    <a class="dropdown-item" href="/cadastro_pacientes/">Cadastro</a><br>
                     <a class="dropdown-item" href="/consulta_pacientes/">Consulta</a>
                     
                 </div>

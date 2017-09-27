@@ -13,6 +13,8 @@ urlpatterns = [
     url(r'^consulta_retorno/$', views.consulta_retorno, name='consulta_retorno'),
     url(r'^lancamento_retorno/$', views.lancamento_retorno, name='lancamento_retorno'),
     url(r'^lanca_atendimento/$', views.lanca_atendimento, name='lanca_atendimento'),
+    url(r'^consulta_atendimento/$', views.consulta_atendimento, name='consulta_atendimento'),
+    
 
 
 

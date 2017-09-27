@@ -1,0 +1,45 @@
+{% extends "confisioapp/base.html" %} {% block conteudo %} {% if lista_atendimentos %}
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12">
+
+      <table class="table table-hover table-active">
+        <thead class="thead-inverse">
+          <tr>
+            <th>#</th>
+            <th>Periodo de avaliação</th>
+            <th>Dias com + 4</th>
+            <th>Média horas</th>
+            <th>IAH</th>
+            <th>IA</th>
+            <th>IH</th>
+            <th>IA Central</th>
+            <th>Queixas</th>
+            <th>Conduta</th>
+            <th>Valor Consulta</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for atendimento in lista_atendimentos %}
+          <tr>
+            <td>{{ atendimento.pk }}</td>
+            <td>{{ atendimento.periodo_avaliacao }}</td>
+            <td>{{ atendimento.dias_mais_quatro }}</td>
+            <td>{{ atendimento.media_horas }}</td>
+            <td>{{ atendimento.iah }}</td>
+            <td>{{ atendimento.ia }}</td>
+            <td>{{ atendimento.ih }}</td>
+            <td>{{ atendimento.ia_central }}</td>
+            <td>{{ atendimento.queixa }}</td>
+            <td>{{ atendimento.conduta }}</td>
+            <td>{{ atendimento.valor_consulta }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %} nenhum atendimento registrado {% endif %}
+
+    </div>
+  </div>
+</div>
+{% endblock %}

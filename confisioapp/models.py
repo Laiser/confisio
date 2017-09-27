@@ -20,7 +20,7 @@ class Paciente(models.Model):
 
 
 class Atendimento(models.Model):
-    pederiodo_avaliacao = models.IntegerField()
+    periodo_avaliacao = models.IntegerField()
     dias_mais_quatro = models.IntegerField()
     media_horas = models.FloatField()
     pressao_media = models.FloatField()
