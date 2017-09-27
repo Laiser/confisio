@@ -6,7 +6,7 @@
       <table class="table table-hover table-active">
         <thead class="thead-inverse">
           <tr>
-            <th>Marcar</th>
+           
             <th>#</th>
             <th>Nome</th>
             <th>Endereço</th>
@@ -22,7 +22,7 @@
         <tbody>
           {% for paciente in lista_pacientes %}
           <tr>
-            <td><input type="checkbox" name="paciente" value="id"></td>
+            
             <td>{{ paciente.pk }}</td>
             <td>{{ paciente.nome }}</td>
             <td>{{ paciente.endereco }}</td>
@@ -33,6 +33,8 @@
             <td>{{ paciente.peso}}</td>
             <td>{{ paciente.altura }}</td>
             <td>{{ paciente.observacao }}</td>
+            <td><button class=" btn btn-default glyphicon glyphicon-search"></button></td>
+            <td> </button><button class="btn btn-default glyphicon glyphicon-pencil"></button></td>
           </tr>
           {% endfor %}
         </tbody>
