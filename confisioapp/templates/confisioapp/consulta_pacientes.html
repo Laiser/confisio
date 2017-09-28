@@ -5,8 +5,7 @@
       {% if lista_pacientes %}
       <table class="table table-hover table-active">
         <thead class="thead-inverse">
-          <tr>
-           
+          <tr>          
             <th>#</th>
             <th>Nome</th>
             <th>Endereço</th>
@@ -21,8 +20,7 @@
         </thead>
         <tbody>
           {% for paciente in lista_pacientes %}
-          <tr>
-            
+          <tr>            
             <td>{{ paciente.pk }}</td>
             <td>{{ paciente.nome }}</td>
             <td>{{ paciente.endereco }}</td>
