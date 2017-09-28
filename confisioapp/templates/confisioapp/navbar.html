@@ -1,8 +1,8 @@
-<nav class="navbar navbar-default"  style="background-color: #417690;"  > 			
-    <div class="container">				
+<nav class="navbar navbar-default" style="background-color: #417690;">
+    <div class="container">
         <div class="navbar-header">
-            <a id="textomenu" href="" class="navbar-brand" >Sistema ConFisio</a>
-            <button class="navbar-toggle glyphicon glyphicon-menu-hamburger" data-toggle ="collapse" data-target = "#lista-menu"></button>
+            <a id="textomenu" href="" class="navbar-brand">Sistema ConFisio</a>
+            <button class="navbar-toggle glyphicon glyphicon-menu-hamburger" data-toggle="collapse" data-target="#lista-menu"></button>
         </div>
 
         <ul class="nav navbar-nav">
@@ -10,34 +10,37 @@
             <!--i {%if request.path == "/paciente/" %} class="active" {% endif %}><a href="/paciente/">Pacientes</a></li-->
             <!--li {%if request.path == "/retorno/" %} class="active" {% endif %}><a  href="/retorno/">Retornos</a></li-->
             <li class="nav-item btn-group">
-                    <a id="textomenu" class="dropdown-toggle nav-link" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a id="textomenu" class="dropdown-toggle nav-link" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
                     Atendimentos
-                    </a>                    
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/atendimento/">Lançamento</a><br>
-                        <a class="dropdown-item" href="/consulta_atendimento/">Consulta</a>
-                        
-                    </div>
-                </li>
-            <li class="nav-item btn-group">
-                <a id="textomenu" class="dropdown-toggle nav-link" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Retornos
-                </a>
+                    </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/lancamento_retorno/">Lançamento</a><br>
-                    <a class="dropdown-item" href="/consulta_retorno/">Consulta</a>
-                    
+                    <a class="dropdown-item" href="/atendimento/">Lançamento</a><br>
+                    <a class="dropdown-item" href="/consulta_atendimento/">Consulta</a>
+
                 </div>
             </li>
-            
+
             <li class="nav-item btn-group">
-                <a id="textomenu" class="dropdown-toggle nav-link" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a id="textomenu" class="dropdown-toggle nav-link" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
                 Cadastro de Pacientes
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/cadastro_pacientes/">Cadastro</a><br>
                     <a class="dropdown-item" href="/consulta_pacientes/">Consulta</a>
-                    
+
+                </div>
+            </li>
+            <li class="nav-item btn-group">
+                <a id="textomenu" class="dropdown-toggle nav-link" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Retornos
+                    </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/lancamento_retorno/">Lançamento</a><br>
+                    <a class="dropdown-item" href="/consulta_retorno/">Consulta</a>
+
                 </div>
             </li>
         </ul>
@@ -48,10 +51,8 @@
         </ul-->
 
     </div>
-    <div class="breadcrumbs" style="background-color: #79AEC8;"  > 	
-    <a href="">Home</a>
-    &rsaquo; <a href="">Pacientes</a>
-    &rsaquo; <a href="">Retornos</a>
+    <div class="breadcrumbs" style="background-color: #79AEC8;">
+        <a href="">Home</a> &rsaquo; <a href="">Pacientes</a> &rsaquo; <a href="">Retornos</a>
     </div>
 
 </nav>
