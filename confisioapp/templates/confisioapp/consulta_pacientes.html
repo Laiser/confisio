@@ -1,5 +1,52 @@
 {% extends "confisioapp/base.html" %} {% block conteudo %}
 <div class="container">
+    <div class="row">
+        <div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-10 col-md-offset-0">
+            <form>
+                <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+                <link rel="stylesheet" href="/resources/demos/style.css">
+                <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                <script>
+                    $(function () {
+                        var availableTags = [
+                            "Ana Paula",
+                            "Bernardo",
+                            "Carlos",
+                            "Daniel",
+                            "Elisa",
+                            "Francisco",
+                            "Géssica",
+                            "Hélio",
+                            "Ivan",
+                            "João",
+                            "Karen",
+                            "Laiser",
+                            "MAria",
+                            "Neiva",
+                            "Otávio",
+                            "Paulo",
+                            "Quelen",
+                            "Roberto",
+                            "Tatiana",
+                            "Ulisses",
+                            "Vanessa",
+                            "Zuleica"
+                        ];
+                        $("#pacientes").autocomplete({
+                            source: availableTags
+                        });
+                    });
+                </script>
+
+                <div class="form-group col-md-8 ">
+                    <label for="pacientes">Consulta pacientes: </label>
+                    <input id="pacientes" type="text" class="form-control" placeholder="Digite o nome do paciênte..."> <br>
+
+                </div>
+            </form>
+        </div>
+    </div>
   <div class="row">
     <div class="col-xs-12 col-sm-12">
       {% if lista_pacientes %}
