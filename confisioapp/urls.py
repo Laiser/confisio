@@ -15,6 +15,8 @@ urlpatterns = [
     url(r'^lanca_atendimento/$', views.lanca_atendimento, name='lanca_atendimento'),
     url(r'^consulta_atendimento/$', views.consulta_atendimento, name='consulta_atendimento'),
     url(r'^processa_cadastro_paciente/$', views.processa_cadastro_paciente, name='processa_cadastro_paciente'),
+     url(r'^cadastro_doenca/$', views.cadastro_doenca, name='cadastro_doenca'),
+    url(r'^cadastro_aparelho/$', views.cadastro_aparelho, name='cadastro_aparelho'),
     url(r'^mensagem/$', views.mensagem, name='mensagem'),
 
     

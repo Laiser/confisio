@@ -8,7 +8,8 @@ def home(request):
     return render(request,'confisioapp/home.html')
 
 def atendimento(request):
-    return render(request,'confisioapp/atendimento.html')
+    lista_pacientes = Paciente.objects.order_by('nome')
+    return render(request,'confisioapp/atendimento.html', {'lista_pacientes': lista_pacientes})
 
 def consulta_atendimento(request):
     lista_atendimentos = Atendimento.objects.all()
@@ -28,6 +29,12 @@ def retorno(request):
 
 def cadastro_pacientes(request):
     return render(request,'confisioapp/cadastro_pacientes.html')
+
+def cadastro_doenca(request):
+    return render(request,'confisioapp/cadastro_doenca.html')
+
+def cadastro_aparelho(request):
+    return render(request,'confisioapp/cadastro_aparelho.html')
 
 def processa_cadastro_paciente(request):
     nome = request.POST.get("nome")
@@ -49,7 +56,8 @@ def processa_cadastro_paciente(request):
         data_nascimento = dataNasci,
         peso = peso,
         altura = altura,
-        observacao = observacao
+        observacao = observacao,
+        endereco = endereco
 
     )
 
@@ -65,7 +73,7 @@ def consulta_pacientes(request):
     return render(request,'confisioapp/consulta_pacientes.html',contexto)
 
 def lancamento_retorno(request):
-    return render(request,'confisioapp/lancamento_retorno.html')
+    return render(request,'confisioapp/lancamento_retorno.html', {'paciente': paciente})
 
 def consulta_retorno(request):
     return render(request,'confisioapp/consulta_retorno.html')
