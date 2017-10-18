@@ -15,12 +15,15 @@ class Paciente(models.Model):
     observacao = models.CharField(max_length = 500)
     queixa = models.CharField(max_length = 500)
     imagem = models.ImageField(upload_to = "\img\chaifoto.jpg",blank=True)
+    doenca_paciente = models.ManyToManyField(Doenca)
+    equipamento_paciente = models.ManyToManyField(Equipamento)
 
     def __str__(self):
         return self.nome
 
 
 class Atendimento(models.Model):
+    id_paciente = models.ForeignKey(Paciente)
     periodo_avaliacao = models.IntegerField()
     dias_mais_quatro = models.IntegerField()
     media_horas = models.FloatField()
@@ -36,7 +39,7 @@ class Atendimento(models.Model):
     def __str__(self):
         return self.queixa
 
-class Doenca(models.Model):
+class Doenca(models.Model):    
     nome = models.CharField(max_length= 200)
 
     def __str__(self):
@@ -46,4 +49,5 @@ class Equipamento(models.Model):
     nome = models.CharField(max_length= 200)
 
 class Retorno(models.Model):
+    id_paciente = models.ForeignKey(Paciente)
     data = models.DateField()
