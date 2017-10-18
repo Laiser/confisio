@@ -9,7 +9,7 @@
                 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                 <script>
                     $(function () {
-                        var availableTags = [
+                        var lista_pacientes = [
                             "Ana Paula",
                             "Bernardo",
                             "Carlos",
@@ -34,7 +34,7 @@
                             "Zuleica"
                         ];
                         $("#pacientes").autocomplete({
-                            source: availableTags
+                            source: lista_pacientes
                         });
                     });
                 </script>
@@ -44,6 +44,7 @@
                     <input id="pacientes" type="text" class="form-control" placeholder="Digite o nome do paciênte..."> <br>
 
                 </div>
+                
             </form>
         </div>
     </div>
