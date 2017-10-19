@@ -15,8 +15,8 @@ class Paciente(models.Model):
     observacao = models.CharField(max_length = 500)
     queixa = models.CharField(max_length = 500)
     imagem = models.ImageField(upload_to = "\img\chaifoto.jpg",blank=True)
-    doenca_paciente = models.ManyToManyField(Doenca)
-    equipamento_paciente = models.ManyToManyField(Equipamento)
+    doenca = models.ManyToManyField('Doenca')
+    equipamento = models.ManyToManyField('Equipamento')
 
     def __str__(self):
         return self.nome
