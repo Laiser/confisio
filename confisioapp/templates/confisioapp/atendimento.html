@@ -2,54 +2,38 @@
 <div class="container">
 
 
-    {% csrf_token %}
+    
 
+    <form name="form1" method="post">
+        {% csrf_token %}
     <div class="row">
         <div class="col-x6-6  col-sm-6  col-md-8 ">
             <div class="form-group  ">
-                    <label for="pacientes">Consulta pacientes: </label>
-                    <input id="pacientes" type="text" class="form-control" placeholder="Digite o nome do paciênte..."> <br>
+                <label for="pacientes">Consulta pacientes: </label>
+                <input name="nome" id="pacientes" type="text" class="form-control" placeholder="Digite o nome do paciênte...">
+                <br>
             </div>
-            
-           
 
 
 
-            <form>
-                <script>
-                    $(function () {
-                        var availableTags = [
-                            "Ana Paula",
-                            "Bernardo",
-                            "Carlos",
-                            "Daniel",
-                            "Elisa",
-                            "Francisco",
-                            "Géssica",
-                            "Hélio",
-                            "Ivan",
-                            "João",
-                            "Karen",
-                            "Laiser",
-                            "MAria",
-                            "Neiva",
-                            "Otávio",
-                            "Paulo",
-                            "Quelen",
-                            "Roberto",
-                            "Tatiana",
-                            "Ulisses",
-                            "Vanessa",
-                            "Zuleica"
-                        ];
-                        $("#pacientes").autocomplete({
-                            source: availableTags
-                        });
+
+
+
+
+            <script>
+                $(function () {
+                    var availableTags = [
+                        //{% for paciente in lista_pacientes %}
+                        "{{ paciente.nome }}",
+                        //{% endfor %}
+                    ];
+                    $("#pacientes").autocomplete({
+                        source: availableTags
                     });
-                </script>
+                });
+            </script>
 
 
-            </form>
         </div>
     </div>
 
@@ -59,27 +43,29 @@
 
         <div class="form-group col-md-2 ">
             <label for="inputAvaliacao" class="col-form-label">Avaliação:</label>
-            <input type="number" name="avaliacao" class="form-control" id="inputAvaliacao" placeholder="Dias">
+            <input type="number" min="0" name="avaliacao" class="form-control" id="inputAvaliacao" placeholder="Dias">
         </div>
 
         <div class="form-group col-md-2  ">
             <label for="inputDiasUso" class="col-form-label">Dias de uso:</label>
-            <input type="number" name="diasUso" class="form-control" id="inputDiasUso" placeholder="Dias">
+            <input type="number" min="0" name="diasUso" class="form-control" id="inputDiasUso" placeholder="Dias">
         </div>
 
         <div class="form-group col-md-2  ">
             <label for="inputDias4" class="col-form-label">Dias + 4h:</label>
-            <input type="number" name="dias4" class="form-control" id="inputDias4" placeholder="Dias">
+            <input type="number" min="0" name="dias4" class="form-control" id="inputDias4" placeholder="Dias">
         </div>
 
         <div class="form-group col-md-2  ">
             <label for="inputMediaUso" class="col-form-label">Média de uso:</label>
-            <input name="mediaHoras" class="form-control" id="inputMediaUso" placeholder="Horas">
+            <input name="mediaHoras" class="form-control" id="inputMediaUso" placeholder="Horas" maxlength="5" onKeyPress="MascaraPeso(form1.mediaHoras);"
+                onBlur="ValidaPeso(form1.mediaHoras);">
         </div>
 
         <div class="form-group col-md-2  ">
             <label for="inputPressaoM" class="col-form-label">Pressão:</label>
-            <input name="pressaoM" class="form-control" id="inputPressaoM" placeholder="Média">
+            <input name="pressaoM" class="form-control" id="inputPressaoM" placeholder="Média" maxlength="5" onKeyPress="MascaraPressao(form1.pressaoM);"
+                onBlur="ValidaPressao(form1.pressaoM);">
         </div>
 
         <div class="form-group col-md-2  ">
@@ -104,15 +90,24 @@
 
         <div class="form-group col-md-2  ">
             <label for="inputIac" class="col-form-label">Valor Consulta:</label>
-            <input name="valorConsulta" class="form-control" id="inputIac" placeholder="Valor">
+            <input name="valorConsulta" class="form-control" id="inputIac" placeholder="Valor" maxlength="6" onKeyPress="MascaraValorConsulta(form1.valorConsulta);"
+                onBlur="ValidaValorConsulta(form1.valorConsulta);">
         </div>
         <div class="form-group col-md-2  ">
             <label for="inputDoenca" class="col-form-label">Doença:</label>
-            <select class="form-control col-2" id="inputDoenca" name="doenca"></select>
+            <select class="form-control col-2" id="inputDoenca" name="doenca">
+                {% for doenca in doencas %}
+                <option value="{{ doenca.nome }}">{{ doenca.nome }}</option>
+                {% endfor %}
+            </select>
         </div>
         <div class="form-group col-md-2  ">
             <label for="inputAparelho" class="col-form-label">Aparelho:</label>
-            <select class="form-control col-2" id="inputAparelho" name="aparelho"></select>
+            <select class="form-control col-2" id="inputAparelho" name="aparelho">
+                {% for equipamento in equipamentos %}
+                <option value="{{ equipamento.nome }}">{{ equipamento.nome }}</option>
+                {% endfor %}
+            </select>
         </div>
 
         <div class="form-group  ">
@@ -122,11 +117,9 @@
 
         <div class="row">
             <div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-10 col-md-offset-0">
-                <form>
-                    <button type="submit" class="btn btn-success">Gravar</button>
-                    <button type="submit" class="btn btn-warning">Editar</button>
-                    <button type="submit" class="btn btn-danger">Deletar</button>
-                </form>
+                <button type="submit" class="btn btn-success">Gravar</button>
+                <button type="submit" class="btn btn-warning">Editar</button>
+                <button type="submit" class="btn btn-danger">Deletar</button>
             </div>
         </div>
 

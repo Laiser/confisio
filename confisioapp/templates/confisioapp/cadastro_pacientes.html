@@ -35,13 +35,17 @@
             <input name="telefone" class="form-control" id="inputTelefone" placeholder="Telefone" maxlength="15" onKeyPress="MascaraTelefone(form1.telefone);"
               onBlur="ValidaTelefone(form1.telefone);">
           </div>
+          
           <div class="form-group col-md-4">
             <label for="inputAltura" class="col-form-label">Altura:</label>
-            <input name="altura" class="form-control" id="inputAltura" placeholder="Altura">
+            <input type="text" name="altura" class="form-control" id="inputAltura" placeholder="Altura"
+             maxlength="4" onKeyPress="MascaraAltura(form1.altura);" onBlur="ValidaAltura(form1.altura);">
           </div>
+
           <div class="form-group col-md-4">
             <label for="inputPeso" class="col-form-label">Peso:</label>
-            <input name="peso" class="form-control" id="inputPeso" placeholder="Peso Kg">
+            <input name="peso" class="form-control" id="inputPeso" placeholder="Peso Kg"
+            maxlength="5" onKeyPress="MascaraPeso(form1.peso);" onBlur="ValidaPeso(form1.peso);">
           </div>
           <div class="form-group  ">
             <textarea class="form-control" name="observacao" rows="5" placeholder="Observações"></textarea>

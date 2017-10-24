@@ -13,10 +13,7 @@ class Paciente(models.Model):
     peso = models.FloatField()
     altura = models.FloatField()
     observacao = models.CharField(max_length = 500)
-    queixa = models.CharField(max_length = 500)
     imagem = models.ImageField(upload_to = "\img\chaifoto.jpg",blank=True)
-    doenca = models.ManyToManyField('Doenca')
-    equipamento = models.ManyToManyField('Equipamento') 
 
     def __str__(self):
         return self.nome
@@ -35,6 +32,8 @@ class Atendimento(models.Model):
     queixa = models.CharField(max_length = 500)
     conduta = models.CharField(max_length = 500)
     valor_consulta =models.FloatField()
+    doenca = models.ManyToManyField('Doenca')
+    equipamento = models.ManyToManyField('Equipamento') 
 
     def __str__(self):
         return self.queixa

@@ -6,6 +6,45 @@ function MascaraTelefone(tel) {
     return formataCampo(tel, '(00) 0000-00000', event);
 }
 
+//adiciona mascara a alguns campos numericos
+function MascaraAltura(altura){
+    if(mascaraInteiro(altura) == false) {
+        event.returnValue = false;
+    }
+    return formataCampo(altura, '0.00', event);
+}
+
+//adiciona mascara a alguns campos numericos
+function MascaraPeso(peso){
+    if(mascaraInteiro(peso) == false) {
+        event.returnValue = false;
+    }
+    return formataCampo(peso, '000.00', event);
+}
+
+//adiciona mascara a alguns campos numericos
+function MascaraPressao(pressao){
+    if(mascaraInteiro(pressao) == false) {
+        event.returnValue = false;
+    }
+    return formataCampo(pressao, '00.00', event);
+}
+
+function MascaraValorConsulta(valorConsulta){
+    if(mascaraInteiro(valorConsulta) == false) {
+        event.returnValue = false;
+    }
+    return formataCampo(valorConsulta, '000.00', event);
+}
+
+/*adiciona mascara a alguns campos numericos
+function MascaraMediaUso(mediaUso){
+    if(mascaraInteiro(mediaUso) == false) {
+        event.returnValue = false;
+    }
+    return formataCampo(mediaUso, '000.00', event);
+}*/
+
 //adiciona mascara ao CPF
 function MascaraCPF(cpf) {
     if (mascaraInteiro(cpf) == false) {
@@ -18,6 +57,31 @@ function MascaraCPF(cpf) {
 function ValidaTelefone(tel) {
     exp = /\(\d{2}\)\ \d{4}\-\d{5}/
 }
+
+//valida numeros
+function ValidaAltura(altura) {
+    exp = /\d{1}\.\d{2}/
+}
+
+//valida numeros
+function ValidaPeso(peso) {
+    exp = /\d{3}\.\d{2}/
+}
+
+//valida numeros
+function ValidaPressao(pressao) {
+    exp = /\d{2}\.\d{2}/
+}
+
+//valida numeros
+function ValidaValorConsulta(valorConsulta) {
+    exp = /\d{3}\.\d{2}/
+}
+
+/*valida numeros
+function ValidaMediaUso(mediaUso) {
+    exp = /\d{3}\.\d{2}/
+}*/
 
 //valida o CPF digitado
 function ValidarCPF(Objcpf) {
