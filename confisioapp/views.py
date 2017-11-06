@@ -119,7 +119,7 @@ def lanca_atendimento(request):
     equipamento = Equipamento.objects.get(nome=request.POST.get("aparelho"))
 
     atendimento = Atendimento (
-        nome = nome,
+        id_paciente = nome,
         periodo_avaliacao = avaliacao,
         dias_mais_quatro = dias4,
         media_horas = mediaHoras,
@@ -130,10 +130,12 @@ def lanca_atendimento(request):
         ia_central = iac,
         queixa = queixa,
         conduta = conduta,
-        valor_consulta = valor,
-        doenca = doenca,
-        equipamento = equipamento
+        valor_consulta = valor
+        #doenca = doenca
+        #equipamento = equipamento
     )
 
     atendimento.save()
+    atendimento.doenca.add(doenca)
+    atendimento.equipamento.add(equipamento)
     return redirect('/consulta_atendimento/')
