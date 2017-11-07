@@ -18,6 +18,7 @@ urlpatterns = [
      url(r'^cadastro_doenca/$', views.cadastro_doenca, name='cadastro_doenca'),
     url(r'^cadastro_aparelho/$', views.cadastro_aparelho, name='cadastro_aparelho'),
     url(r'^mensagem/$', views.mensagem, name='mensagem'),
+    url(r'^edicao_paciente/(?P<pk>[0-9]+)/$', views.edicao_paciente, name='edicao_paciente'),
 
     
 

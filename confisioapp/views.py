@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import *
 from django.shortcuts import redirect
 
@@ -83,6 +83,38 @@ def processa_cadastro_paciente(request):
     )
     paciente.save()
     return redirect('/consulta_pacientes/')
+
+
+def edicao_paciente(request, pk):
+    paciente = get_object_or_404(Paciente, pk=pk)
+    if request.method == "POST":
+        nome = request.POST.get("nome")
+        endereco = request.POST.get("endereco")
+        email = request.POST.get("email")
+        cpf = request.POST.get("cpf")
+        dataNasci = request.POST.get("dataNascimento")
+        telefone = request.POST.get("telefone")
+        altura = request.POST.get("altura")
+        peso = request.POST.get("peso")
+        observacao = request.POST.get("observacao")
+
+        paciente = Paciente(
+            nome = nome,
+            cpf = cpf,
+            email = email,
+            telefone = telefone,
+            data_nascimento = dataNasci,
+            peso = peso,
+            altura = altura,
+            observacao = observacao,
+            endereco = endereco
+        )
+        paciente.save()
+        return redirect('/')
+    
+    return render(request, 'confisioapp/cadastro_pacientes.html')
+
+
     
 
 def consulta_pacientes(request):
