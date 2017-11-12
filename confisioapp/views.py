@@ -88,31 +88,22 @@ def processa_cadastro_paciente(request):
 def edicao_paciente(request, pk):
     paciente = get_object_or_404(Paciente, pk=pk)
     if request.method == "POST":
-        nome = request.POST.get("nome")
-        endereco = request.POST.get("endereco")
-        email = request.POST.get("email")
-        cpf = request.POST.get("cpf")
-        dataNasci = request.POST.get("dataNascimento")
-        telefone = request.POST.get("telefone")
-        altura = request.POST.get("altura")
-        peso = request.POST.get("peso")
-        observacao = request.POST.get("observacao")
-
-        paciente = Paciente(
-            nome = nome,
-            cpf = cpf,
-            email = email,
-            telefone = telefone,
-            data_nascimento = dataNasci,
-            peso = peso,
-            altura = altura,
-            observacao = observacao,
-            endereco = endereco
-        )
+        paciente.nome = request.POST.get("nome")
+        paciente.endereco = request.POST.get("endereco")
+        paciente.email = request.POST.get("email")
+        paciente.cpf = request.POST.get("cpf")
+        paciente.data_nascimento = request.POST.get("dataNascimento")
+        paciente.telefone = request.POST.get("telefone")
+        paciente.altura = request.POST.get("altura")
+        paciente.peso = request.POST.get("peso")
+        paciente.observacao = request.POST.get("observacao")
         paciente.save()
         return redirect('/')
-    
-    return render(request, 'confisioapp/cadastro_pacientes.html')
+    else:
+        aux = Paciente.objects.filter(pk=pk)
+        print(paciente)
+        print(aux)
+        return render(request, 'confisioapp/cadastro_pacientes.html', {'aux': aux})
 
 
     

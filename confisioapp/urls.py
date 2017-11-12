@@ -20,10 +20,6 @@ urlpatterns = [
     url(r'^mensagem/$', views.mensagem, name='mensagem'),
     url(r'^edicao_paciente/(?P<pk>[0-9]+)/$', views.edicao_paciente, name='edicao_paciente'),
 
-    
-
-
-
     #url(r'^', include(confisioapp.urls)),
 
 ]

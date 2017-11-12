@@ -95,6 +95,19 @@ def main():
     event = service.events().insert(calendarId='primary', body=event).execute()
     print ('Event created:'+(event.get('htmlLink')))
 
+    #deletar um evento do calendario
+    #service.events().delete(calendarId='primary', eventId='eventId').execute()
+
+    '''Listar eventos no calendario'''
+    page_token = None
+    while True:
+        events = service.events().list(calendarId='primary', pageToken=page_token).execute()
+        for event in events['items']:
+            print(event['summary'])
+        page_token = events.get('nextPageToken')
+        if not page_token:
+            break
+
 
 if __name__ == '__main__':
     main()

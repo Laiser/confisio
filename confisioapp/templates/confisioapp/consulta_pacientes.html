@@ -1,41 +1,42 @@
 {% extends "confisioapp/base.html" %} {% block conteudo %}
 <div class="container">
-    <div class="row">
-        <div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-10 col-md-offset-0">
-            <form>
-                <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-                <link rel="stylesheet" href="/resources/demos/style.css">
-                <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-              
-                <script>
-                    $(function () {
-                        var availableTags = [
-                        //{% for paciente in lista_pacientes %}
-                        "{{ paciente.nome }}",
-                        //{% endfor %}
-                        ];
-                        $("#pacientes").autocomplete({
-                            source: availableTags
-                        });
-                    });
-                </script>
-              
+  <div class="row">
+    <div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-10 col-md-offset-0">
+      <form>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-                <div class="form-group col-md-8 ">
-                    <label for="pacientes">Consulta pacientes: </label>
-                    <input id="pacientes" type="text" class="form-control" placeholder="Digite o nome do paciênte..."> <br>
+        <script>
+          $(function () {
+            var availableTags = [
+              //{% for paciente in lista_pacientes %}
+              "{{ paciente.nome }}",
+              //{% endfor %}
+            ];
+            $("#pacientes").autocomplete({
+              source: availableTags
+            });
+          });
+        </script>
 
-                </div>
-            </form>
+
+        <div class="form-group col-md-8 ">
+          <label for="pacientes">Consulta pacientes: </label>
+          <input id="pacientes" type="text" class="form-control" placeholder="Digite o nome do paciênte...">
+          <br>
+
         </div>
+      </form>
     </div>
+  </div>
   <div class="row">
     <div class="col-xs-12 col-sm-12">
       {% if lista_pacientes %}
       <table class="table table-hover table-active">
         <thead class="thead-inverse">
-          <tr>          
+          <tr>
             <th>#</th>
             <th>Nome</th>
             <th>Endereço</th>
@@ -45,12 +46,12 @@
             <th>Nascimento</th>
             <th>Peso</th>
             <th>Altura</th>
-            <th>Observação</th>            
+            <th>Observação</th>
           </tr>
         </thead>
         <tbody>
           {% for paciente in lista_pacientes %}
-          <tr>            
+          <tr>
             <td>{{ paciente.pk }}</td>
             <td>{{ paciente.nome }}</td>
             <td>{{ paciente.endereco }}</td>
@@ -61,8 +62,20 @@
             <td>{{ paciente.peso}}</td>
             <td>{{ paciente.altura }}</td>
             <td>{{ paciente.observacao }}</td>
-            <td><button class=" btn btn-default glyphicon glyphicon-search"></button></td>
-            <td> </button><button class="btn btn-default glyphicon glyphicon-pencil"></button></td>
+            <td>
+              <div class="col-auto mr-auto">
+                <p>
+                  <a class="btn btn-default glyphicon glyphicon-search" href="" role="button"></a>
+                </p>
+              </div>
+            </td>
+            <td>
+              <div class="col-auto mr-auto">
+                <p>
+                  <a class="btn btn-default glyphicon glyphicon-pencil" href="/edicao_paciente/{{paciente.pk}}/" role="button"></a>
+                </p>
+              </div>
+            </td>
           </tr>
           {% endfor %}
         </tbody>
