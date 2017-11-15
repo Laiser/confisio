@@ -20,8 +20,10 @@ def atendimento(request):
 
 def consulta_atendimento(request):
     lista_atendimentos = Atendimento.objects.all()
+    lista_pacientes = Paciente.objects.all()
     contexto = {
         'lista_atendimentos' : lista_atendimentos,
+        'lista_pacientes' : lista_pacientes,
     }
     return render(request,'confisioapp/consulta_atendimento.html',contexto)
 
@@ -98,14 +100,52 @@ def edicao_paciente(request, pk):
         paciente.peso = request.POST.get("peso")
         paciente.observacao = request.POST.get("observacao")
         paciente.save()
-        return redirect('/')
+        return redirect('/consulta_pacientes/')
     else:
-        aux = Paciente.objects.filter(pk=pk)
-        print(paciente)
-        print(aux)
-        return render(request, 'confisioapp/cadastro_pacientes.html', {'aux': aux})
+        return render(request, 'confisioapp/cadastro_pacientes.html', {'paciente': paciente})
 
 
+def edicao_atendimento(request, pk):
+    atendimento = get_object_or_404(Atendimento, pk=pk)
+    if request.method == "POST":
+        atendimento.id_paciente = Paciente.objects.get(nome=request.POST.get("nome"))
+        atendimento.periodo_avaliacao = request.POST.get("avaliacao")
+        #atendimento.diasUso = request.POST.get("diasUso") NÃO EXISTE NO MODEL
+        atendimento.dias_mais_quatro = request.POST.get("dias4")
+        atendimento.media_horas = request.POST.get("mediaHoras")
+        atendimento.pressao_media = request.POST.get("pressaoM")
+        atendimento.iah = request.POST.get("iah")
+        atendimento.ia = request.POST.get("ia")
+        atendimento.ih = request.POST.get("ih")
+        atendimento.ia_central = request.POST.get("iac")
+        atendimento.queixa = request.POST.get("queixa")
+        atendimento.conduta = request.POST.get("queixa")
+        atendimento.valor_consulta = request.POST.get("valorConsulta")
+        #atendimento.doenca = Doenca.objects.get(nome=request.POST.get("doenca"))
+        #atendimento.equipamento = Equipamento.objects.get(nome=request.POST.get("aparelho"))
+        atendimento.save()
+        return redirect('/consulta_atendimento/')
+    else:        
+        paciente = None
+        doencaA = None
+        equipamentoA = None
+        paciente = Paciente.objects.get(nome=atendimento.id_paciente)
+        doencaA = atendimento.doenca.all()
+        equipamentoA = atendimento.equipamento.all()
+        lista_pacientes = Paciente.objects.order_by('nome')
+        doencas = Doenca.objects.order_by('nome')
+        equipamentos = Equipamento.objects.order_by('nome')
+        
+        contexto = {
+            'atendimento' : atendimento,
+            'paciente' : paciente,
+            'lista_pacientes' : lista_pacientes,
+            'doencas' : doencas,
+            'equipamentos' : equipamentos,
+            'doencaA' : doencaA, 
+            'equipamentoA' : equipamentoA,
+        }
+        return render(request, 'confisioapp/atendimento.html', contexto)
     
 
 def consulta_pacientes(request):
@@ -116,7 +156,8 @@ def consulta_pacientes(request):
     return render(request,'confisioapp/consulta_pacientes.html',contexto)
 
 def lancamento_retorno(request):
-    return render(request,'confisioapp/lancamento_retorno.html', {'paciente': paciente})
+    lista_pacientes = Paciente.objects.all().order_by('nome')
+    return render(request,'confisioapp/lancamento_retorno.html', {'lista_pacientes': lista_pacientes})
 
 def consulta_retorno(request):
     return render(request,'confisioapp/consulta_retorno.html')
@@ -154,8 +195,6 @@ def lanca_atendimento(request):
         queixa = queixa,
         conduta = conduta,
         valor_consulta = valor
-        #doenca = doenca
-        #equipamento = equipamento
     )
 
     atendimento.save()

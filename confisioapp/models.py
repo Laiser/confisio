@@ -38,14 +38,23 @@ class Atendimento(models.Model):
     def __str__(self):
         return self.queixa
 
-class Doenca(models.Model):    
+class Doenca(models.Model):
     nome = models.CharField(max_length= 200)
 
     def __str__(self):
         return self.nome
 
+    def __eq__(self, other): 
+        return self.__dict__ == other.__dict__
+
 class Equipamento(models.Model):
     nome = models.CharField(max_length= 200)
+
+    def __str__(self):
+        return self.nome
+
+    def __eq__(self, other): 
+        return self.__dict__ == other.__dict__
 
 class Retorno(models.Model):
     id_paciente = models.ForeignKey(Paciente)

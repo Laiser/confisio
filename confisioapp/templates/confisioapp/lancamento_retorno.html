@@ -1,74 +1,38 @@
 {% extends "confisioapp/base.html" %} {% block conteudo %}
 
-<div class="row">
 
-    <div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-6 col-md-offset-3">
+<script>
+    $(function () {
+        var availableTags = [
+            //{% for paciente in lista_pacientes %}
+            "{{ paciente.nome }}",
+            //{% endfor %}
+        ];
+        $("#pacientes").autocomplete({
+            source: availableTags
+        });
+    });
+</script>
 
-        <form>
-            <div class="row">
-                <div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-10 col-md-offset-0">
-                    <form>
-                        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-                        <link rel="stylesheet" href="/resources/demos/style.css">
-                        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-                        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-                        <script>
-                            $(function () {
-                                var availableTags = [
-                                    "Ana Paula",
-                                    "Bernardo",
-                                    "Carlos",
-                                    "Daniel",
-                                    "Elisa",
-                                    "Francisco",
-                                    "Géssica",
-                                    "Hélio",
-                                    "Ivan",
-                                    "João",
-                                    "Karen",
-                                    "Laiser",
-                                    "MAria",
-                                    "Neiva",
-                                    "Otávio",
-                                    "Paulo",
-                                    "Quelen",
-                                    "Roberto",
-                                    "Tatiana",
-                                    "Ulisses",
-                                    "Vanessa",
-                                    "Zuleica"
-                                ];
-                                $("#pacientes").autocomplete({
-                                    source: availableTags
-                                });
-                            });
-                        </script>
 
-                        <div class="form-group col-md-10 ">
-                            <label for="pacientes">Consulta pacientes: </label>
-                            <input id="pacientes" type="text" class="form-control" placeholder="Digite o nome do paciênte...">                          
-
-                        </div>
-                    </form>
-                </div>
+<div class="col-md-10 col-xs-offset-2">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-8">
+                <label for="pacientes">Consulta pacientes: </label>
+                <input id="pacientes" type="text" class="form-control" placeholder="Digite o nome do paciente...">
             </div>
+        </div>
 
-            <div class="form-group col-md-4">
+        <div class="form-group">
+            <div class="col-md-3">
                 <label for="inputData" class="col-form-label">Data:</label>
                 <input type="date" name="data" class="form-control" id="inputData" placeholder="Data">
             </div>
-            
+        </div>
 
-        </form>
-    </div>    
-</div>
-
-<div class="row">
-    <div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-6 col-md-offset-3">
         <button type="submit" class="btn btn-success">Gravar</button>
-    </div>
 
-    
-
+    </form>
 </div>
 {% endblock %}

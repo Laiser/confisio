@@ -2,10 +2,128 @@
 <div class="container">
 
 
-    
+    {% if atendimento %} {% for aux in atendimento %}
 
-    <form name="form1" method="post" action="/lanca_atendimento/">
+    <form name="form1" method="post" action="/edicao_atendimento/{{aux.pk}}/">
         {% csrf_token %}
+        <div class="row">
+            <div class="col-x6-6  col-sm-6  col-md-8 ">
+                <div class="form-group  ">
+                    <label for="pacientes">Consulta pacientes: </label>
+                    <input name="nome" id="pacientes" type="text" class="form-control" placeholder="Digite o nome do paciênte..." value="{{paciente.nome}}">
+                    <br>
+                </div>
+
+                <script>
+                    $(function () {
+                        var availableTags = [
+                            //{% for paciente in lista_pacientes %}
+                            "{{ paciente.nome }}",
+                            //{% endfor %}
+                        ];
+                        $("#pacientes").autocomplete({
+                            source: availableTags
+                        });
+                    });
+                </script>
+
+
+            </div>
+        </div>
+
+
+
+        <div class="row">
+
+            <div class="form-group col-md-2 ">
+                <label for="inputAvaliacao" class="col-form-label">Avaliação:</label>
+                <input type="number" min="0" name="avaliacao" class="form-control" id="inputAvaliacao" placeholder="Dias" value="{{aux.periodo_avaliacao}}">
+            </div>
+
+            <div class="form-group col-md-2  ">
+                <label for="inputDiasUso" class="col-form-label">Dias de uso:</label>
+                <input type="number" min="0" name="diasUso" class="form-control" id="inputDiasUso" placeholder="Dias">
+            </div>
+
+            <div class="form-group col-md-2  ">
+                <label for="inputDias4" class="col-form-label">Dias + 4h:</label>
+                <input type="number" min="0" name="dias4" class="form-control" id="inputDias4" placeholder="Dias" value="{{aux.dias_mais_quatro}}">
+            </div>
+
+            <div class="form-group col-md-2  ">
+                <label for="inputMediaUso" class="col-form-label">Média de uso:</label>
+                <input name="mediaHoras" class="form-control" id="inputMediaUso" placeholder="Horas" maxlength="5" onKeyPress="MascaraPeso(form1.mediaHoras);"
+                    onBlur="ValidaPeso(form1.mediaHoras);" value="{{aux.media_horas}}">
+            </div>
+
+            <div class="form-group col-md-2  ">
+                <label for="inputPressaoM" class="col-form-label">Pressão:</label>
+                <input name="pressaoM" class="form-control" id="inputPressaoM" placeholder="Média" maxlength="5" onKeyPress="MascaraPressao(form1.pressaoM);"
+                    onBlur="ValidaPressao(form1.pressaoM);" value="{{aux.pressao_media}}">
+            </div>
+
+            <div class="form-group col-md-2  ">
+                <label for="inputIah" class="col-form-label">IAH:</label>
+                <input name="iah" class="form-control" id="inputIah" placeholder="Valor" value="{{aux.iah}}">
+            </div>
+
+            <div class="form-group col-md-2  ">
+                <label for="inputIa" class="col-form-label">IA:</label>
+                <input name="ia" class="form-control" id="inputIa" placeholder="Valor" value="{{aux.ia}}">
+            </div>
+
+            <div class="form-group col-md-2  ">
+                <label for="inputIh" class="col-form-label">IH:</label>
+                <input name="ih" class="form-control" id="inputIh" placeholder="Valor" value="{{aux.ih}}">
+            </div>
+
+            <div class="form-group col-md-2  ">
+                <label for="inputIac" class="col-form-label">IA Central:</label>
+                <input name="iac" class="form-control" id="inputIac" placeholder="Valor" value="{{aux.ia_central}}">
+            </div>
+
+            <div class="form-group col-md-2  ">
+                <label for="inputIac" class="col-form-label">Valor Consulta:</label>
+                <input name="valorConsulta" class="form-control" id="inputIac" placeholder="Valor" maxlength="6" onKeyPress="MascaraValorConsulta(form1.valorConsulta);"
+                    onBlur="ValidaValorConsulta(form1.valorConsulta);" value="{{aux.valor_consulta}}">
+            </div>
+            <div class="form-group col-md-2  ">
+                <label for="inputDoenca" class="col-form-label">Doença:</label>
+                <select class="form-control col-2" id="inputDoenca" name="doenca">
+                    {% for doenca in doencas %}
+                    <option value="{{ doenca.nome }}">{{ doenca.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col-md-2  ">
+                <label for="inputAparelho" class="col-form-label">Aparelho:</label>
+                <select class="form-control col-2" id="inputAparelho" name="aparelho">
+                    {% for equipamento in equipamentos %}
+                    <option value="{{ equipamento.nome }}">{{ equipamento.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group  ">
+
+                <textarea class="form-control" name="queixa" rows="5" id="comment" placeholder="Queixas do paciente">{{aux.queixa}}</textarea>
+            </div>
+
+            <div class="row">
+                <div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-10 col-md-offset-0">
+                    <button type="submit" class="btn btn-success">Salvar</button>
+                </div>
+            </div>
+
+    </form>
+
+    </div>
+
+</div>
+
+{% endfor %} {% else %}
+<form name="form1" method="post" action="/lanca_atendimento/">
+    {% csrf_token %}
     <div class="row">
         <div class="col-x6-6  col-sm-6  col-md-8 ">
             <div class="form-group  ">
@@ -13,12 +131,6 @@
                 <input name="nome" id="pacientes" type="text" class="form-control" placeholder="Digite o nome do paciênte...">
                 <br>
             </div>
-
-
-
-
-
-
 
             <script>
                 $(function () {
@@ -117,20 +229,14 @@
 
         <div class="row">
             <div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-10 col-md-offset-0">
-                <button type="submit" class="btn btn-success">Gravar</button>
-                <button type="submit" class="btn btn-warning">Editar</button>
-                <button type="submit" class="btn btn-danger">Deletar</button>
+                <button type="submit" class="btn btn-success">Salvar</button>
             </div>
         </div>
 
-        </form>
-
-    </div>
-
+</form>
 </div>
-
-
-
+</div>
+{% endif %}
 
 </div>
 {% endblock %}
