@@ -1,28 +1,11 @@
-{% extends "confisioapp/base.html" %} {% block conteudo %} {% if lista_atendimentos %}
-<div class="container">
-    <div class="row">
-        <script>
-            $(function () {
-                var lista_pacientes = [
-                    //{% for paciente in lista_pacientes %}
-                    "{{ paciente.nome }}",
-                    //{% endfor %}
-                ];
-                $("#pacientes").autocomplete({
-                    source: lista_pacientes
-                });
-            });
-        </script>
+{% extends "confisioapp/base.html" %} {% block conteudo %}
 
-        <div class="col-md-8 ">
-            <label for="pacientes">Consulta pacientes: </label>
-            <input id="pacientes" type="text" class="form-control" placeholder="Digite o nome do paciênte...">
-            <br>
-        </div>
-    </div>
+ 
+<div class="container">
+    {% if lista_atendimentos %}
     <div class="table-responsive">
-        <table class="table table-hover table-active">
-            <thead class="thead-inverse">
+        <table id="example" class="display" cellspacing="0" width="100%">
+            <thead>
                 <tr>
                     <th>#</th>
                     <th>Periodo de avaliação</th>
@@ -40,29 +23,25 @@
             <tbody>
                 {% for atendimento in lista_atendimentos %}
                 <tr>
-                    <td>{{ atendimento.pk }}</td>
-                    <td>{{ atendimento.periodo_avaliacao }}</td>
-                    <td>{{ atendimento.dias_mais_quatro }}</td>
-                    <td>{{ atendimento.media_horas }}</td>
-                    <td>{{ atendimento.iah }}</td>
-                    <td>{{ atendimento.ia }}</td>
-                    <td>{{ atendimento.ih }}</td>
-                    <td>{{ atendimento.ia_central }}</td>
-                    <td>{{ atendimento.queixa }}</td>
-                    <td>{{ atendimento.conduta }}</td>
-                    <td>{{ atendimento.valor_consulta }}</td>
-                    <td>
-                        <div class="col-auto mr-auto">
-                            <p>
-                                <a class="btn btn-default glyphicon glyphicon-pencil" href="/edicao_atendimento/{{atendimento.pk}}/" role="button"></a>
-                            </p>
-                        </div>
+                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.pk }}</a></td>
+                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.periodo_avaliacao }}</a></td>
+                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.dias_mais_quatro }}</a></td>
+                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.media_horas }}</a></td>
+                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.iah }}</a></td>
+                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.ia }}</a></td>
+                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.ih }}</a></td>
+                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.ia_central }}</a></td>
+                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.queixa }}</a></td>
+                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.conduta }}</a></td>
+                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.valor_consulta }}</a></td>            
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
     {% else %}
-    <h2>Nenhum atendimento registrado</h2> {% endif %}
+    <h2>Nenhum atendimento registrado</h2>
+    {% endif %}
+
 </div>
 {% endblock %}

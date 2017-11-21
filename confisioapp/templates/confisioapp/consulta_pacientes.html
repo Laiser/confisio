@@ -1,28 +1,11 @@
 {% extends "confisioapp/base.html" %} {% block conteudo %}
-<div class="container">
-  <div class="row">
-    <script>
-      $(function () {
-        var availableTags = [
-          //{% for paciente in lista_pacientes %}
-          "{{ paciente.nome }}",
-          //{% endfor %}
-        ];
-        $("#pacientes").autocomplete({
-          source: availableTags
-        });
-      });
-    </script>
-    <div class="col-md-8 ">
-      <label for="pacientes">Consulta pacientes: </label>
-      <input id="pacientes" type="text" class="form-control" placeholder="Digite o nome do paciênte...">
-      <br>
-    </div>
-  </div>
+
+
+<div class="container">  
   {% if lista_pacientes %}
   <div class="table-responsive">
-    <table class="table table-hover table-active">
-      <thead class="thead-inverse">
+    <table id="example" class="display" cellspacing="0" width="100%">
+      <thead>
         <tr>
           <th>#</th>
           <th>Nome</th>
@@ -39,23 +22,16 @@
       <tbody>
         {% for paciente in lista_pacientes %}
         <tr>
-          <td>{{ paciente.pk }}</td>
-          <td>{{ paciente.nome }}</td>
-          <td>{{ paciente.endereco }}</td>
-          <td>{{ paciente.cpf }}</td>
-          <td>{{ paciente.email }}</td>
-          <td>{{ paciente.telefone }}</td>
-          <td>{{ paciente.data_nascimento }}</td>
-          <td>{{ paciente.peso}}</td>
-          <td>{{ paciente.altura }}</td>
-          <td>{{ paciente.observacao }}</td>
-          <td>
-            <div class="col-auto mr-auto">
-              <p>
-                <a class="btn btn-default glyphicon glyphicon-pencil" href="/edicao_paciente/{{paciente.pk}}/" role="button"></a>
-              </p>
-            </div>
-          </td>
+          <td><a href="/edicao_paciente/{{paciente.pk}}/">{{ paciente.pk }}</a></td>
+          <td><a href="/edicao_paciente/{{paciente.pk}}/">{{ paciente.nome }}</a></td>
+          <td><a href="/edicao_paciente/{{paciente.pk}}/">{{ paciente.endereco }}</a></td>
+          <td><a href="/edicao_paciente/{{paciente.pk}}/">{{ paciente.cpf }}</a></td>
+          <td><a href="/edicao_paciente/{{paciente.pk}}/">{{ paciente.email }}</a></td>
+          <td><a href="/edicao_paciente/{{paciente.pk}}/">{{ paciente.telefone }}</a></td>
+          <td><a href="/edicao_paciente/{{paciente.pk}}/">{{ paciente.data_nascimento }}</a></td>
+          <td><a href="/edicao_paciente/{{paciente.pk}}/">{{ paciente.peso}}</a></td>
+          <td><a href="/edicao_paciente/{{paciente.pk}}/">{{ paciente.altura }}</a></td>
+          <td><a href="/edicao_paciente/{{paciente.pk}}/">{{ paciente.observacao }}</a></td>
         </tr>
         {% endfor %}
       </tbody>

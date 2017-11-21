@@ -37,14 +37,6 @@ function MascaraValorConsulta(valorConsulta){
     return formataCampo(valorConsulta, '000.00', event);
 }
 
-/*adiciona mascara a alguns campos numericos
-function MascaraMediaUso(mediaUso){
-    if(mascaraInteiro(mediaUso) == false) {
-        event.returnValue = false;
-    }
-    return formataCampo(mediaUso, '000.00', event);
-}*/
-
 //adiciona mascara ao CPF
 function MascaraCPF(cpf) {
     if (mascaraInteiro(cpf) == false) {

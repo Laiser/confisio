@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import *
 from django.shortcuts import redirect
 
-# Criar funções para requisição!!
+from table.views import FeedDataView
 
 def home(request):
     return render(request,'confisioapp/home.html')
@@ -20,7 +20,7 @@ def atendimento(request):
 
 def consulta_atendimento(request):
     lista_atendimentos = Atendimento.objects.all()
-    lista_pacientes = Paciente.objects.all()
+    lista_pacientes = Paciente.objects.all()    
     contexto = {
         'lista_atendimentos' : lista_atendimentos,
         'lista_pacientes' : lista_pacientes,
@@ -150,8 +150,10 @@ def edicao_atendimento(request, pk):
 
 def consulta_pacientes(request):
     lista_pacientes = Paciente.objects.all()
+    #table = ModelTable()
     contexto = {
         'lista_pacientes' : lista_pacientes,
+     #   'paciente' : table,
     }
     return render(request,'confisioapp/consulta_pacientes.html',contexto)
 
