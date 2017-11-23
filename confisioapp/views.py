@@ -60,56 +60,59 @@ def cadastro_aparelho(request):
     return render(request,'confisioapp/cadastro_aparelho.html')
 
 def processa_cadastro_paciente(request):
-    nome = request.POST.get("nome")
-    endereco = request.POST.get("endereco")
-    email = request.POST.get("email")
-    cpf = request.POST.get("cpf")
-    dataNasci = request.POST.get("dataNascimento")
-    telefone = request.POST.get("telefone")
-    altura = request.POST.get("altura")
-    peso = request.POST.get("peso")
-    observacao = request.POST.get("observacao")
-
-    if nome or endereco or email or cpf or dataNasci or telefone or altura or peso or observacao is None:
+    try:
+        nome = request.POST.get("nome")
+        endereco = request.POST.get("endereco")
+        email = request.POST.get("email")
+        cpf = request.POST.get("cpf")
+        dataNasci = request.POST.get("dataNascimento")
+        telefone = request.POST.get("telefone")
+        altura = request.POST.get("altura")
+        peso = request.POST.get("peso")
+        observacao = request.POST.get("observacao")    
+    
+        paciente = Paciente(
+            nome = nome,
+            cpf = cpf,
+            email = email,
+            telefone = telefone,
+            data_nascimento = dataNasci,
+            peso = peso,
+            altura = altura,
+            observacao = observacao,
+            endereco = endereco
+        )
+        paciente.save()
+        return redirect('/consulta_pacientes/')
+    except Exception:
         error = True
         return render(request, 'confisioapp/cadastro_pacientes.html', {'error': error})
-
-    paciente = Paciente(
-        nome = nome,
-        cpf = cpf,
-        email = email,
-        telefone = telefone,
-        data_nascimento = dataNasci,
-        peso = peso,
-        altura = altura,
-        observacao = observacao,
-        endereco = endereco
-    )
-    paciente.save()
-    return redirect('/consulta_pacientes/')
+        
+        
 
 
 def edicao_paciente(request, pk):
     paciente = get_object_or_404(Paciente, pk=pk)
-    if request.method == "POST":
-        if request.POST.get("nome") or  request.POST.get("endereco") or request.POST.get("email") or request.POST.get("cpf") or request.POST.get("dataNascimento") or request.POST.get("telefone") or request.POST.get("altura") or request.POST.get("peso") or request.POST.get("observacao") is None:
+    if request.method == "POST":    
+        try:
+            paciente.nome = request.POST.get("nome")
+            paciente.endereco = request.POST.get("endereco")
+            paciente.email = request.POST.get("email")
+            paciente.cpf = request.POST.get("cpf")
+            paciente.data_nascimento = request.POST.get("dataNascimento")
+            paciente.telefone = request.POST.get("telefone")
+            paciente.altura = request.POST.get("altura")
+            paciente.peso = request.POST.get("peso")
+            paciente.observacao = request.POST.get("observacao")
+            paciente.save()
+            return redirect('/consulta_pacientes/')
+        except Exception:
             error = True
             contexto = {
                 'paciente' : paciente,
                 'error' : error,
             }
-            return render(request, 'confisioapp/cadastro_pacientes.html', contexto)
-        paciente.nome = request.POST.get("nome")
-        paciente.endereco = request.POST.get("endereco")
-        paciente.email = request.POST.get("email")
-        paciente.cpf = request.POST.get("cpf")
-        paciente.data_nascimento = request.POST.get("dataNascimento")
-        paciente.telefone = request.POST.get("telefone")
-        paciente.altura = request.POST.get("altura")
-        paciente.peso = request.POST.get("peso")
-        paciente.observacao = request.POST.get("observacao")
-        paciente.save()
-        return redirect('/consulta_pacientes/')
+            return render(request, 'confisioapp/cadastro_pacientes.html', contexto)                    
     else:
         return render(request, 'confisioapp/cadastro_pacientes.html', {'paciente': paciente})
 
@@ -140,17 +143,22 @@ def edicao_atendimento(request, pk):
         equipamentoA = None
         paciente = Paciente.objects.get(nome=atendimento.id_paciente)
         doencaA = atendimento.doenca.all()
-        equipamentoA = atendimento.equipamento.all()
+        equipamentos = Equipamento.objects.order_by('nome')
+        equipamentoA = [(value, True) if str(value) == str(equip) else (value, False) for value in equipamentos for equip in atendimento.equipamento.all()]
+        for equipamento in equipamentoA:
+            print(type(equipamento))
+            if equipamento[1] is True:
+                print('ok')
+            print(equipamento)
         lista_pacientes = Paciente.objects.order_by('nome')
         doencas = Doenca.objects.order_by('nome')
-        equipamentos = Equipamento.objects.order_by('nome')
         
         contexto = {
             'atendimento' : atendimento,
             'paciente' : paciente,
             'lista_pacientes' : lista_pacientes,
             'doencas' : doencas,
-            'equipamentos' : equipamentos,
+ #           'equipamentos' : equipamentos,
             'doencaA' : doencaA, 
             'equipamentoA' : equipamentoA,
         }

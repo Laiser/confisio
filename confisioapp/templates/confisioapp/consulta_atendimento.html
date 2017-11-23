@@ -8,15 +8,16 @@
             <thead>
                 <tr>
                     <th>#</th>
+                    <th>Paciente</th>
                     <th>Periodo de avaliação</th>
                     <th>Dias com + 4</th>
                     <th>Média horas</th>
                     <th>IAH</th>
                     <th>IA</th>
                     <th>IH</th>
-                    <th>IA Central</th>
-                    <th>Queixas</th>
-                    <th>Conduta</th>
+                    <th>IA Central</th>                                                        
+                    <th>Doença</th>
+                    <th>Equipamento</th>
                     <th>Valor Consulta</th>
                 </tr>
             </thead>
@@ -24,16 +25,17 @@
                 {% for atendimento in lista_atendimentos %}
                 <tr>
                     <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.pk }}</a></td>
+                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.id_paciente }}</a></td>
                     <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.periodo_avaliacao }}</a></td>
                     <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.dias_mais_quatro }}</a></td>
                     <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.media_horas }}</a></td>
                     <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.iah }}</a></td>
                     <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.ia }}</a></td>
                     <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.ih }}</a></td>
-                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.ia_central }}</a></td>
-                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.queixa }}</a></td>
-                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.conduta }}</a></td>
-                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.valor_consulta }}</a></td>            
+                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.ia_central }}</a></td>                                              
+                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{%for doenca in atendimento.doenca.all%}{{ doenca }}{%endfor%}</a></td>
+                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{%for equipamento in atendimento.equipamento.all%}{{ equipamento }}{%endfor%}</a></td>                    
+                    <td><a href="/edicao_atendimento/{{atendimento.pk}}/">{{ atendimento.valor_consulta }}</a></td> 
                 </tr>
                 {% endfor %}
             </tbody>
