@@ -22,9 +22,6 @@
 }
 
 
-
-
-
 /************************************************************
 *************************Footer******************************
 *************************************************************/
@@ -36,8 +33,7 @@
 .footer-bottom {
     background-color: #79AEC8;
     min-height: 30px;
-	width: 100%;
-	 
+    width: 100%; 
 }
 .copyright {
     color: #fff;
@@ -66,7 +62,7 @@ footer.navbar-default.navbar-fixed-bottom
  {
 	  background:#417690;
 	  color:white;
-	  padding:1em 0;
+      padding:1em 0;    
  }
  footer.navbar-default.navbar-fixed-bottom p
  {

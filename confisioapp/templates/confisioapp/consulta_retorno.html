@@ -1,101 +1,89 @@
-<html>
-  <head>
-      <link rel="stylesheet" href="/static/scheduler/dhtmlxscheduler.css">
-      <script src="/static/scheduler/dhtmlxscheduler.js"></script>
-      <script src="/static/scheduler/dhtmlxscheduler_quick_info.js"></script>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sistema ConFisio</title>
 
-  </head>
-{% block conteudo %}
+  <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/bootstrap/js/jquery.min.js"></script>
+  <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 
-<style type="text/css" >
-	.generic{
-		margin:0px;
-		padding:0px;
-		height:90%;
-		overflow:hidden;
-	}
-</style>
-<script type="text/javascript" charset="uft-8">
-	function init() {
-		scheduler.config.touch = "force";
-		scheduler.config.multi_day = true;
-		
-		scheduler.config.xml_date="%Y-%m-%d %H:%i";
-		scheduler.init('scheduler_here',new Date,"week");
-	}
-</script>
-    
-           <!-- <div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-6 col-md-offset-3">
-                
-                <form>
-                    <div class="form-group col-md-4">
-                        <label for="inputData" class="col-form-label">Data inicial:</label>
-                        <input type="date" name="data" class="form-control" id="inputData" placeholder="Data">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label  class="col-form-label">Data final:</label>
-                        <input type="date" name="data" class="form-control" id="inputData" placeholder="Data">
-                    </div>
-                    <div class="form-group col-md-4">                        
-                        <button class=" btn btn-default glyphicon glyphicon-search"></button>                        
-                    </div>
+  <script src="/static/bootstrap/js/util.js"></script>
 
-                    <table class="table table-hover table-active">
-                        <thead class="thead-inverse">
-                          <tr>
-                            <th>#</th>
-                            <th>Paciente</th>
-                            <th>Sobrenome</th>
-                            <th>Data do retorno</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>João</td>
-                            <td>Soares</td>
-                            <td>23/09/2017</td>
-                            
-                            
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Pedro</td>
-                            <td>Martins</td>
-                            <td>24/10/2018</td>
-                            
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Paulo</td>
-                            <td>Souza</td>
-                            <td>15/04/2017</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      
-                      
-                </form>                    
-                            
-           </div>
-</div> -->
-<body onload="init();" class="generic">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
-        <div class="dhx_cal_navline">
-          <div class="dhx_cal_prev_button">&nbsp;</div>
-          <div class="dhx_cal_next_button">&nbsp;</div>
-          <div class="dhx_cal_today_button"></div>
-          <div class="dhx_cal_date"></div>
-          <div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>
-          <div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>
-          <div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>
-        </div>
-        <div class="dhx_cal_header">
-        </div>
-        <div class="dhx_cal_data">
+  <link rel="stylesheet" href="/static/scheduler/dhtmlxscheduler.css">
+  <script src="/static/scheduler/dhtmlxscheduler.js"></script>
+  <script src="/static/scheduler/dhtmlxscheduler_quick_info.js"></script>
+
+
+  <script src="/static/bootstrap/js/datatables.min.js"></script>
+  <link rel="stylesheet" href="/static/bootstrap/css/datatables.min.css">
+
+  <style type="text/css">
+    .generic {
+      margin: 0px;
+      padding: 0px;
+      height: 90%;
+      overflow: hidden;
+    }
+  </style>
+  <script type="text/javascript" charset="uft-8">
+    function init() {
+      scheduler.config.touch = "force";
+      scheduler.config.multi_day = true;
+
+      scheduler.config.xml_date = "%Y-%m-%d %H:%i";
+      scheduler.init('scheduler_here', new Date, "week");
+    }
+  </script>
+</head>
+
+<body id="corpo" onload="init();" class="generic">
+  {% include "confisioapp/navbar.html" %}
+
+
+<div class="container">
+  <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
+    <div class="dhx_cal_navline">
+      <div class="dhx_cal_prev_button">&nbsp;</div>
+      <div class="dhx_cal_next_button">&nbsp;</div>
+      <div class="dhx_cal_today_button"></div>
+      <div class="dhx_cal_date"></div>
+      <div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>
+      <div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>
+      <div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>
+    </div>
+    <div class="dhx_cal_header">
+    </div>
+    <div class="dhx_cal_data">
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+
+<footer class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="copyright">
+          © 2017, All rights reserved
         </div>
       </div>
-    </boby>
-    </html>
-{% endblock %}
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="design">
+          <a>Web Design & Development by Laiser Mello and Evandro Fensterseifer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</html>

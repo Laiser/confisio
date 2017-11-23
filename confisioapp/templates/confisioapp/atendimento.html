@@ -125,6 +125,11 @@
 <form name="form1" method="post" action="/lanca_atendimento/">
     {% csrf_token %}
     <div class="row">
+
+        
+        {% if error %}
+        <div class="alert alert-danger" role="alert">Preencha todos os campos com valores válidos!</div>{%endif%}
+
         <div class="col-x6-6  col-sm-6  col-md-8 ">
             <div class="form-group  ">
                 <label for="pacientes">Consulta pacientes: </label>
@@ -149,10 +154,7 @@
         </div>
     </div>
 
-
-
     <div class="row">
-
         <div class="form-group col-md-2 ">
             <label for="inputAvaliacao" class="col-form-label">Avaliação:</label>
             <input type="number" min="0" name="avaliacao" class="form-control" id="inputAvaliacao" placeholder="Dias">

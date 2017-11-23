@@ -158,11 +158,9 @@ def edicao_atendimento(request, pk):
     
 
 def consulta_pacientes(request):
-    lista_pacientes = Paciente.objects.all()
-    #table = ModelTable()
+    lista_pacientes = Paciente.objects.all()    
     contexto = {
-        'lista_pacientes' : lista_pacientes,
-     #   'paciente' : table,
+        'lista_pacientes' : lista_pacientes,    
     }
     return render(request,'confisioapp/consulta_pacientes.html',contexto)
 
@@ -177,38 +175,50 @@ def mensagem(request):
     return render(request,'confisioapp/mensagem.html')
 
 def lanca_atendimento(request):
-    nome = Paciente.objects.get(nome=request.POST.get("nome"))
-    avaliacao = request.POST.get("avaliacao")
-    diasUso = request.POST.get("diasUso")
-    dias4 = request.POST.get("dias4")
-    mediaHoras = request.POST.get("mediaHoras")
-    pressaoM = request.POST.get("pressaoM")
-    iah = request.POST.get("iah")
-    ia = request.POST.get("ia")
-    ih = request.POST.get("ih")
-    iac = request.POST.get("iac")
-    queixa = request.POST.get("queixa")
-    conduta = request.POST.get("queixa")
-    valor = request.POST.get("valorConsulta")
-    doenca = Doenca.objects.get(nome=request.POST.get("doenca"))
-    equipamento = Equipamento.objects.get(nome=request.POST.get("aparelho"))
+    try:
+        nome = Paciente.objects.get(nome=request.POST.get("nome"))
+        avaliacao = request.POST.get("avaliacao")
+        #diasUso = request.POST.get("diasUso")   NÃO TEM NO MODEL
+        dias4 = request.POST.get("dias4")
+        mediaHoras = request.POST.get("mediaHoras")
+        pressaoM = request.POST.get("pressaoM")
+        iah = request.POST.get("iah")
+        ia = request.POST.get("ia")
+        ih = request.POST.get("ih")
+        iac = request.POST.get("iac")
+        queixa = request.POST.get("queixa")
+        conduta = request.POST.get("queixa")
+        valor = request.POST.get("valorConsulta")
+        doenca = Doenca.objects.get(nome=request.POST.get("doenca"))
+        equipamento = Equipamento.objects.get(nome=request.POST.get("aparelho"))
+        atendimento = Atendimento (
+            id_paciente = nome,
+            periodo_avaliacao = avaliacao,
+            dias_mais_quatro = dias4,
+            media_horas = mediaHoras,
+            pressao_media = pressaoM,
+            iah = iah,
+            ia = ia,
+            ih = ih,
+            ia_central = iac,
+            queixa = queixa,
+            conduta = conduta,
+            valor_consulta = valor
+        )
 
-    atendimento = Atendimento (
-        id_paciente = nome,
-        periodo_avaliacao = avaliacao,
-        dias_mais_quatro = dias4,
-        media_horas = mediaHoras,
-        pressao_media = pressaoM,
-        iah = iah,
-        ia = ia,
-        ih = ih,
-        ia_central = iac,
-        queixa = queixa,
-        conduta = conduta,
-        valor_consulta = valor
-    )
-
-    atendimento.save()
-    atendimento.doenca.add(doenca)
-    atendimento.equipamento.add(equipamento)
-    return redirect('/consulta_atendimento/')
+        atendimento.save()
+        atendimento.doenca.add(doenca)
+        atendimento.equipamento.add(equipamento)
+        return redirect('/consulta_atendimento/')
+    except Exception:    
+        error = True
+        lista_pacientes = Paciente.objects.order_by('nome')
+        doencas = Doenca.objects.order_by('nome')
+        equipamentos = Equipamento.objects.order_by('nome')
+        contexto = {
+            'lista_pacientes' : lista_pacientes,
+            'doencas' : doencas,
+            'equipamentos' : equipamentos,
+            'error' : error,
+        }
+        return render(request, 'confisioapp/atendimento.html', contexto)
