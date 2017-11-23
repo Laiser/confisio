@@ -2,8 +2,6 @@ from django.shortcuts import render, get_object_or_404
 from .models import *
 from django.shortcuts import redirect
 
-from table.views import FeedDataView
-
 def home(request):
     return render(request,'confisioapp/home.html')
 
@@ -72,6 +70,10 @@ def processa_cadastro_paciente(request):
     peso = request.POST.get("peso")
     observacao = request.POST.get("observacao")
 
+    if nome or endereco or email or cpf or dataNasci or telefone or altura or peso or observacao is None:
+        error = True
+        return render(request, 'confisioapp/cadastro_pacientes.html', {'error': error})
+
     paciente = Paciente(
         nome = nome,
         cpf = cpf,
@@ -90,6 +92,13 @@ def processa_cadastro_paciente(request):
 def edicao_paciente(request, pk):
     paciente = get_object_or_404(Paciente, pk=pk)
     if request.method == "POST":
+        if request.POST.get("nome") or  request.POST.get("endereco") or request.POST.get("email") or request.POST.get("cpf") or request.POST.get("dataNascimento") or request.POST.get("telefone") or request.POST.get("altura") or request.POST.get("peso") or request.POST.get("observacao") is None:
+            error = True
+            contexto = {
+                'paciente' : paciente,
+                'error' : error,
+            }
+            return render(request, 'confisioapp/cadastro_pacientes.html', contexto)
         paciente.nome = request.POST.get("nome")
         paciente.endereco = request.POST.get("endereco")
         paciente.email = request.POST.get("email")

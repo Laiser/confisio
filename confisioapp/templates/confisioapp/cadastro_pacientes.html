@@ -5,6 +5,7 @@
 
     <div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-10 col-md-offset-1">
 
+      {% if error %}<div class="alert alert-danger" role="alert">Preencha todos os campos com valores válidos!</div>{%endif%}
       
       <form method="post" {% if paciente %}action="/edicao_paciente/{{paciente.pk}}/"{% else %}action="/processa_cadastro_paciente/"{% endif %} name="form1">
         {% csrf_token %}
@@ -28,8 +29,8 @@
           </div>
           <div class="form-group col-md-4">
             <label for="inputDataNascimento" class="col-form-label">Data Nascimento:</label>
-            <input type="date" name="dataNascimento" class="form-control" id="inputDataNascimento" placeholder="Data de Nascimento" value="{% firstof paciente.data_nascimento "" %}">
-          </div>
+            <input type="date" name="dataNascimento" class="form-control" id="inputDataNascimento" placeholder="Data de Nascimento" {% if paciente %}value="{{paciente.data_nascimento|date:'Y-m-d'}}"{%else%}value=""{%endif%}>
+          </div>      
           <div class="form-group col-md-4">
             <label for="inputTelefone" class="col-form-label">Telefone:</label>
             <input name="telefone" class="form-control" id="inputTelefone" placeholder="Telefone" maxlength="15" onKeyPress="MascaraTelefone(form1.telefone);"
