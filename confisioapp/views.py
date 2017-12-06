@@ -133,34 +133,32 @@ def edicao_atendimento(request, pk):
         atendimento.queixa = request.POST.get("queixa")
         atendimento.conduta = request.POST.get("queixa")
         atendimento.valor_consulta = request.POST.get("valorConsulta")
-        #atendimento.doenca = Doenca.objects.get(nome=request.POST.get("doenca"))
-        #atendimento.equipamento = Equipamento.objects.get(nome=request.POST.get("aparelho"))
+        aux = atendimento.doenca.all()
+        for x in aux:
+            atendimento.doenca.remove(x)
+        aux = atendimento.equipamento.all()
+        for x in aux:
+            atendimento.equipamento.remove(x)
+        atendimento.doenca.add(Doenca.objects.get(nome=request.POST.get("doenca")))
+        atendimento.equipamento.add(Equipamento.objects.get(nome=request.POST.get("aparelho")))
         atendimento.save()
         return redirect('/consulta_atendimento/')
     else:        
         paciente = None
-        doencaA = None
-        equipamentoA = None
-        paciente = Paciente.objects.get(nome=atendimento.id_paciente)
-        doencaA = atendimento.doenca.all()
-        equipamentos = Equipamento.objects.order_by('nome')
-        equipamentoA = [(value, True) if str(value) == str(equip) else (value, False) for value in equipamentos for equip in atendimento.equipamento.all()]
-        for equipamento in equipamentoA:
-            print(type(equipamento))
-            if equipamento[1] is True:
-                print('ok')
-            print(equipamento)
-        lista_pacientes = Paciente.objects.order_by('nome')
+        paciente = Paciente.objects.get(nome=atendimento.id_paciente)        
         doencas = Doenca.objects.order_by('nome')
+        AuxDoenca = [(value, True) if str(value) == str(aux) else (value, False) for value in doencas for aux in atendimento.doenca.all()]
+        equipamentos = Equipamento.objects.order_by('nome')
+        AuxEquip = [(value, True) if str(value) == str(equip) else (value, False) for value in equipamentos for equip in atendimento.equipamento.all()]
+        lista_pacientes = Paciente.objects.order_by('nome')        
         
         contexto = {
             'atendimento' : atendimento,
             'paciente' : paciente,
             'lista_pacientes' : lista_pacientes,
             'doencas' : doencas,
- #           'equipamentos' : equipamentos,
-            'doencaA' : doencaA, 
-            'equipamentoA' : equipamentoA,
+            'AuxEquip' : AuxEquip,
+            'AuxDoenca' : AuxDoenca,             
         }
         return render(request, 'confisioapp/atendimento.html', contexto)
     
