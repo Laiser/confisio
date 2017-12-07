@@ -107,7 +107,6 @@
                     {%endif%} {% endfor %}
                 </select>
             </div>
-
             <div class="form-group  ">
                 <textarea class="form-control" name="queixa" rows="5" id="comment" placeholder="Queixas do paciente">{{atendimento.queixa}}</textarea>
             </div>
@@ -208,14 +207,15 @@
             <input name="valorConsulta" class="form-control" id="inputIac" placeholder="Valor" maxlength="6" onKeyPress="MascaraValorConsulta(form1.valorConsulta);"
                 onBlur="ValidaValorConsulta(form1.valorConsulta);">
         </div>
-        <div class="form-group col-md-2  ">
+        
+        <!--<div class="form-group col-md-2  ">
             <label for="inputDoenca" class="col-form-label">Doença:</label>
             <select class="form-control col-2" id="inputDoenca" name="doenca">
                 {% for doenca in doencas %}
                 <option value="{{ doenca.nome }}">{{ doenca.nome }}</option>
                 {% endfor %}
             </select>
-        </div>    
+        </div>
 
         <div class="form-group col-md-2  ">
             <label for="inputAparelho" class="col-form-label">Aparelho:</label>
@@ -224,10 +224,51 @@
                 <option value="{{ equipamento.nome }}">{{ equipamento.nome }}</option>
                 {% endfor %}
             </select>
+        </div>-->
+            
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="multi-prepend" class="control-label">Doença</label>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" data-select2-open="multi-prepend">
+                                    Tipos
+                                </button>
+                            </span>
+                            <select id="multi-prepend" class="form-control select2-multiple" name="doenca" multiple>
+                                <option></option>
+                                {% for doenca in doencas %}
+                                <option value="{{ doenca.nome }}">{{ doenca.nome }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                        <div class="form-group">
+                            <label for="multi-prepend" class="control-label">Equipamento</label>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" data-select2-open="multi-prepend">
+                                        Tipos
+                                    </button>
+                                </span>
+                                <select id="multi-prepend" class="form-control select2-multiple" name="aparelho" multiple>
+                                    <option></option>
+                                    {% for equipamento in equipamentos %}
+                                    <option value="{{ equipamento.nome }}">{{ equipamento.nome }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+            </div>
         </div>
 
-        <div class="form-group  ">
-
+        <div class="form-group">
             <textarea class="form-control" name="queixa" rows="5" id="comment" placeholder="Queixas do paciente"></textarea>
         </div>
 
@@ -235,7 +276,8 @@
             <div class="col-x6-6 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-10 col-md-offset-0">
                 <button type="submit" class="btn btn-success">Salvar</button>
             </div>
-        </div>
+        </div>    
+
 </form>
 </div>
 </div>

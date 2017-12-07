@@ -180,7 +180,7 @@ def consulta_retorno(request):
 def mensagem(request):
     return render(request,'confisioapp/mensagem.html')
 
-def lanca_atendimento(request):
+def lanca_atendimento(request):    
     try:
         nome = Paciente.objects.get(nome=request.POST.get("nome"))
         avaliacao = request.POST.get("avaliacao")
@@ -195,8 +195,12 @@ def lanca_atendimento(request):
         queixa = request.POST.get("queixa")
         conduta = request.POST.get("queixa")
         valor = request.POST.get("valorConsulta")
-        doenca = Doenca.objects.get(nome=request.POST.get("doenca"))
-        equipamento = Equipamento.objects.get(nome=request.POST.get("aparelho"))
+        auxList = request.POST.getlist("doenca")
+        #doenca = Doenca.objects.get(nome=request.POST.getlist("doenca"))
+        #doenca = Doenca.objects.get(nome=request.POST.get("doenca"))
+        auxListE = request.POST.getlist("aparelho")        
+        #equipamento = Equipamento.objects.get(nome=request.POST.getlist("aparelho"))
+        #equipamento = Equipamento.objects.get(nome=request.POST.get("aparelho"))
         atendimento = Atendimento (
             id_paciente = nome,
             periodo_avaliacao = avaliacao,
@@ -213,11 +217,17 @@ def lanca_atendimento(request):
         )
 
         atendimento.save()
-        atendimento.doenca.add(doenca)
-        atendimento.equipamento.add(equipamento)
+        for x in auxList:
+            doenca = Doenca.objects.get(nome=x)
+            atendimento.doenca.add(doenca)
+        for x in auxListE:
+            equipamento = Equipamento.objects.get(nome=x)
+            atendimento.equipamento.add(equipamento)
+            #atendimento.doenca.add(doenca)
+            #atendimento.equipamento.add(equipamento)
         return redirect('/consulta_atendimento/')
     except Exception:    
-        error = True
+        error = True        
         lista_pacientes = Paciente.objects.order_by('nome')
         doencas = Doenca.objects.order_by('nome')
         equipamentos = Equipamento.objects.order_by('nome')
