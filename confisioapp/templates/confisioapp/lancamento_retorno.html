@@ -1,26 +1,32 @@
 {% extends "confisioapp/base.html" %} {% block conteudo %}
 
 
-<script>
-    $(function () {
-        var availableTags = [
-            //{% for paciente in lista_pacientes %}
-            "{{ paciente.nome }}",
-            //{% endfor %}
-        ];
-        $("#pacientes").autocomplete({
-            source: availableTags
-        });
-    });
-</script>
-
-
 <div class="col-md-10 col-xs-offset-2">
-    <form class="form-horizontal">
-        <div class="form-group">
+    <form class="form-horizontal" action="/criaEventoApi/" method="post">
+        {% csrf_token %}
+        <!--<div class="form-group">
             <div class="col-md-8">
                 <label for="pacientes">Consulta pacientes: </label>
                 <input id="pacientes" type="text" class="form-control" placeholder="Digite o nome do paciente...">
+            </div>
+        </div>-->
+
+        <div class="form-group">
+            <div class="col-md-8">
+                <label for="single-prepend" class="control-label">Consulta paciente</label>
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" data-select2-open="multi-prepend3">
+                            Nome
+                        </button>
+                    </span>
+                    <select id="multi-prepend3" class="form-control select2-single" name="nome">
+                        <option></option>
+                        {% for paciente in lista_pacientes %}
+                        <option value="{{ paciente.nome }}">{{ paciente.nome }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
             </div>
         </div>
 
@@ -28,6 +34,17 @@
             <div class="col-md-3">
                 <label for="inputData" class="col-form-label">Data:</label>
                 <input type="date" name="data" class="form-control" id="inputData" placeholder="Data">
+            </div>
+            <div class="col-md-2 col-md-offset-1">
+                <label for="inputHora" class="col-form-label">Hora:</label>
+                <input type="time" name="tempo" class="form-control" id="inputTime">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-8">
+                <label for="descricao">Descrição: </label>
+                <textarea class="form-control" name="description" rows="5" id="comment" placeholder="Descrição do retorno"></textarea>
             </div>
         </div>
 

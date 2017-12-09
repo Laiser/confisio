@@ -1,54 +1,6 @@
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sistema ConFisio</title>
-
-  <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" href="/static/style.css">
-  <script src="/static/bootstrap/js/jquery.min.js"></script>
-  <script src="/static/bootstrap/js/bootstrap.min.js"></script>
-
-  <script src="/static/bootstrap/js/util.js"></script>
-
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-  <link rel="stylesheet" href="/static/scheduler/dhtmlxscheduler.css">
-  <script src="/static/scheduler/dhtmlxscheduler.js"></script>
-  <script src="/static/scheduler/dhtmlxscheduler_quick_info.js"></script>
-
-
-  <script src="/static/bootstrap/js/datatables.min.js"></script>
-  <link rel="stylesheet" href="/static/bootstrap/css/datatables.min.css">
-
-  <style type="text/css">
-    .generic {
-      margin: 0px;
-      padding: 0px;
-      height: 90%;
-      overflow: hidden;
-    }
-  </style>
-  <script type="text/javascript" charset="uft-8">
-    function init() {
-      scheduler.config.touch = "force";
-      scheduler.config.multi_day = true;
-
-      scheduler.config.xml_date = "%Y-%m-%d %H:%i";
-      scheduler.init('scheduler_here', new Date, "week");
-    }
-  </script>
-</head>
-
-<body id="corpo" onload="init();" class="generic">
-  {% include "confisioapp/navbar.html" %}
-
-
-<div class="container">
-  <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:90%;'>
+{% extends "confisioapp/base.html" %} {% block conteudo %}
+<div class="container" style='height:95%;'>
+  <!--<div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:90%;'>
     <div class="dhx_cal_navline">
       <div class="dhx_cal_prev_button">&nbsp;</div>
       <div class="dhx_cal_next_button">&nbsp;</div>
@@ -62,28 +14,7 @@
     </div>
     <div class="dhx_cal_data">
     </div>
-  </div>
+  </div>-->
+  <iframe src="https://calendar.google.com/calendar/embed?src=efilho%40inf.ufsm.br&ctz=America/Sao_Paulo" style="border: 0" width="800" height="550" frameborder="0" scrolling="no"></iframe>
 </div>
-
-
-
-</body>
-
-<!--<footer class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="copyright">
-          © 2017, All rights reserved
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="design">
-          <a>Web Design & Development by Laiser Mello and Evandro Fensterseifer</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>-->
-
-</html>
+{% endblock %}

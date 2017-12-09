@@ -171,7 +171,7 @@
                             Nomes
                         </button>
                     </span>
-                    <select id="multi-prepend3" class="form-control select2-multiple" name="nome" multiple>
+                    <select id="multi-prepend3" class="form-control select2-single" name="nome">
                         <option></option>
                         {% for paciente in lista_pacientes %}
                         <option value="{{ paciente.nome }}">{{ paciente.nome }}</option>

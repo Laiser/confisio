@@ -59,3 +59,5 @@ class Equipamento(models.Model):
 class Retorno(models.Model):
     id_paciente = models.ForeignKey(Paciente)
     data = models.DateField()
+    hora = models.TimeField()
+    description = models.CharField(max_length= 200, default="")

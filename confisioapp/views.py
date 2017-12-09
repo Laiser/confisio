@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from .models import *
 from django.shortcuts import redirect
+from confisioapp.functionsConnectorApi import *
+
 
 def home(request):
     return render(request,'confisioapp/home.html')
@@ -238,3 +240,16 @@ def lanca_atendimento(request):
             'error' : error,
         }
         return render(request, 'confisioapp/atendimento.html', contexto)
+
+def criaEventoApi(request):
+    try:
+        nome = Paciente.objects.get(nome=request.POST.get("nome"))
+        data = request.POST.get("data")
+        hora = request.POST.get("tempo")
+        descricao = request.POST.get("description")
+        funcaoPrincipal(nome, descricao, data, hora)
+        return render(request, 'confisioapp/consulta_retorno.html')
+    except Exception:
+        error = True
+        lista_pacientes = Paciente.objects.order_by('nome')
+        return render(request, 'confisioapp/lancamento_retorno.html', lista_pacientes)    
