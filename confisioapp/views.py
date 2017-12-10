@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import *
 from django.shortcuts import redirect
 from confisioapp.functionsConnectorApi import *
+from datetime import date
 
 
 def home(request):
@@ -241,10 +242,14 @@ def lanca_atendimento(request):
         }
         return render(request, 'confisioapp/atendimento.html', contexto)
 
-def criaEventoApi(request):
+def criaEventoApi(request):    
     try:
+        now = date.today()        
         nome = Paciente.objects.get(nome=request.POST.get("nome"))
         data = request.POST.get("data")
+        dataAux = datetime.datetime.strptime(data, '%Y-%m-%d').date()        
+        if dataAux < now:
+            raise Exception            
         hora = request.POST.get("tempo")
         descricao = request.POST.get("description")
         funcaoPrincipal(nome, descricao, data, hora)
@@ -252,4 +257,8 @@ def criaEventoApi(request):
     except Exception:
         error = True
         lista_pacientes = Paciente.objects.order_by('nome')
-        return render(request, 'confisioapp/lancamento_retorno.html', lista_pacientes)    
+        contexto = {
+            'lista_pacientes': lista_pacientes,
+            'error': error,
+        }
+        return render(request, 'confisioapp/lancamento_retorno.html', contexto)

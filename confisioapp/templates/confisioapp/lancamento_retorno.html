@@ -2,6 +2,9 @@
 
 
 <div class="col-md-10 col-xs-offset-2">
+        {% if error %}
+        <div class="alert alert-danger col-md-8" role="alert">Preencha todos os campos com valores válidos!</div>{%endif%}
+  
     <form class="form-horizontal" action="/criaEventoApi/" method="post">
         {% csrf_token %}
         <!--<div class="form-group">

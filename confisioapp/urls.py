@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^edicao_paciente/(?P<pk>[0-9]+)/$', views.edicao_paciente, name='edicao_paciente'),
     url(r'^edicao_atendimento/(?P<pk>[0-9]+)/$', views.edicao_atendimento, name='edicao_atendimento'),
     url(r'^criaEventoApi/$', views.criaEventoApi, name='criaEventoApi'),
+    url(r'^trataData/$', views.trataData, name='trataData'),
 
     #url(r'^', include(confisioapp.urls)),
 
