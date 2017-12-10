@@ -123,7 +123,7 @@ def edicao_paciente(request, pk):
 def edicao_atendimento(request, pk):
     atendimento = get_object_or_404(Atendimento, pk=pk)
     if request.method == "POST":
-        atendimento.id_paciente = Paciente.objects.get(nome=request.POST.get("nome"))
+        #atendimento.id_paciente = Paciente.objects.get(nome=request.POST.get("nome")) NAO MUDA NO HTML O NOME NEM E POSSIVEL MUDAR
         atendimento.periodo_avaliacao = request.POST.get("avaliacao")
         #atendimento.diasUso = request.POST.get("diasUso") NÃO EXISTE NO MODEL
         atendimento.dias_mais_quatro = request.POST.get("dias4")
@@ -142,8 +142,16 @@ def edicao_atendimento(request, pk):
         aux = atendimento.equipamento.all()
         for x in aux:
             atendimento.equipamento.remove(x)
-        atendimento.doenca.add(Doenca.objects.get(nome=request.POST.get("doenca")))
-        atendimento.equipamento.add(Equipamento.objects.get(nome=request.POST.get("aparelho")))
+        auxList = request.POST.getlist("doenca")
+        auxListE = request.POST.getlist("aparelho")
+        for x in auxList:
+            doenca = Doenca.objects.get(nome=x)
+            atendimento.doenca.add(doenca)
+        for x in auxListE:
+            equipamento = Equipamento.objects.get(nome=x)
+            atendimento.equipamento.add(equipamento)
+       # atendimento.doenca.add(Doenca.objects.get(nome=request.POST.get("doenca")))
+        #atendimento.equipamento.add(Equipamento.objects.get(nome=request.POST.get("aparelho")))
         atendimento.save()
         return redirect('/consulta_atendimento/')
     else:        
@@ -153,13 +161,13 @@ def edicao_atendimento(request, pk):
         AuxDoenca = [(value, True) if str(value) == str(aux) else (value, False) for value in doencas for aux in atendimento.doenca.all()]
         equipamentos = Equipamento.objects.order_by('nome')
         AuxEquip = [(value, True) if str(value) == str(equip) else (value, False) for value in equipamentos for equip in atendimento.equipamento.all()]
-        lista_pacientes = Paciente.objects.order_by('nome')        
+        lista_pacientes = Paciente.objects.order_by('nome') 
         
         contexto = {
             'atendimento' : atendimento,
-            'paciente' : paciente,
-            'lista_pacientes' : lista_pacientes,
+            'paciente' : paciente,            
             'doencas' : doencas,
+            'equipamentos' : equipamentos,
             'AuxEquip' : AuxEquip,
             'AuxDoenca' : AuxDoenca,             
         }
